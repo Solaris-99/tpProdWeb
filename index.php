@@ -1,5 +1,13 @@
 <?php
-require __DIR__ . '/business/listado-peliculas.php'
+
+require_once __DIR__.'/dataAccess/Dao.php';
+require_once __DIR__.'/dataAccess/MovieDaoMySql.php';
+require_once __DIR__.'/entity/Movie.php';
+require_once __DIR__.'/business/MovieBusiness.php';
+
+$movieBusiness = new MovieBusiness();
+$peliculas = $movieBusiness->all();
+
 ?>
 
 <!DOCTYPE html>
@@ -43,17 +51,17 @@ require __DIR__ . '/business/listado-peliculas.php'
             <?php if (!empty($peliculas)): ?>
                 <?php foreach ($peliculas as $pelicula): ?>
                     <div class="card d-inline-block m-2" style="width: 18rem;">
-                        <a href="pelicula.php?id=<?php echo $pelicula->id; ?>">
-                            <img src="<?php echo $pelicula->poster; ?>" class="card-img-top" style="height:300px;" alt="<?php echo $pelicula->titulo; ?>">
+                        <a href="pelicula.php?id=<?php echo $pelicula->getId(); ?>">
+                            <img src="<?php echo $pelicula->getPoster(); ?>" class="card-img-top" style="height:300px;" alt="<?php echo $pelicula->getTitle(); ?>">
                         </a>
                         <div class="card-body">
-                            <a href="pelicula.php?id=<?php echo $pelicula->id; ?>" class='text-decoration-none'>
-                                <h5 class="card-title text-truncate  fw-bold"><?php echo $pelicula->titulo; ?></h5>
+                            <a href="pelicula.php?id=<?php echo $pelicula->getId(); ?>" class='text-decoration-none'>
+                                <h5 class="card-title text-truncate  fw-bold"><?php echo $pelicula->getTitle(); ?></h5>
                             </a>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item" class="d-block" style="height:4rem"><strong>Genero: </strong><?php echo $pelicula->genero; ?></li>
-                                <li class="list-group-item"><strong>Rating: </strong><?php echo $pelicula->rating; ?></li>
-                                <li class="list-group-item"><strong>Duración: </strong><?php echo $pelicula->duracion; ?></li>
+                                <li class="list-group-item" class="d-block" style="height:4rem"><strong>Genero: </strong><?php echo $pelicula->getGenero(); ?></li>
+                                <li class="list-group-item"><strong>Rating: </strong><?php echo $pelicula->getRating(); ?></li>
+                                <li class="list-group-item"><strong>Duración: </strong><?php echo $pelicula->getDuracion(); ?></li>
                             </ul>
                         </div>
                     </div>

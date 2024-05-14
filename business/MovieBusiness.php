@@ -1,41 +1,23 @@
 <?php
-require __DIR__ . '/../dataAccess/DaoMySql.php';
+
+require_once __DIR__.'/../dataAccess/Dao.php';
+require_once __DIR__.'/../dataAccess/MovieDaoMySql.php';
 
 class MovieBusiness 
 {
-    private $id;
-    private $title;
-    private $estreno;
-    private $rating;
-    private $duracion;
-    private $poster;
-    private $genero;
-
-    public function __construct($movie)
+    private Dao $dao;
+    
+    public function __construct()
     {
-        $this->id = $movie['id'];
-        $this->title = $movie['title'];
-        $this->estreno = $movie['estreno'];
-        $this->rating = $movie['rating'];
-        $this->duracion = $movie['duracion'];
-        $this->poster = $movie['poster'];
-        $this->genero = $movie['genero'];
-
+        $this->dao = new MovieDaoMySql();
     }
 
     public function find($id){
-        $dao = DaoMySql::getInstace();
-        $movie = $dao->find($id);
-        return new MovieBusiness($movie);
+        return $this->dao->find($id); //validar si existe;
     }
 
     public function all(){
-        $dao = DaoMySql::getInstace();
-        $movie_data = $dao->all();
-        $movies = [];
-        foreach($movie_data as $movie){
-            array_push($movies,new MovieBusiness($movie_data));
-        }
+        $movies = $this->dao->all();
         return $movies;
     }
 
