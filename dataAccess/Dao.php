@@ -3,13 +3,12 @@ require __DIR__. '/../entity/Movie.php';
 
 abstract class Dao{
 
-    abstract public function all();
+    protected $pdo;
+    abstract public function all(array $filter);
     abstract public function find(int $id);
     //create
+    // abstract public function create(array $data)
     //edit
-    protected function hydrate(array $data)
-    {
-        return new Movie($data);
-    }
-
+    // abstract public function delete(array $data)
+    // abstract public function update(array $data)
 }

@@ -1,6 +1,10 @@
 <?php
 
-require_once './business/MovieBusiness.php';
+require_once __DIR__.'/../business/MovieBusiness.php';
+if(!isset($_GET['id'])){
+    echo file_get_contents("404.php");
+    die;
+}
 
 $movieBusiness = new MovieBusiness();
 $pelicula = $movieBusiness->find($_GET['id']);

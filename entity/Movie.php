@@ -1,33 +1,17 @@
 <?php
+require_once 'BaseModel.php';
 
-class Movie{
-    private $id;
-    private $title;
-    private $estreno;
-    private $rating;
-    private $duracion;
-    private $poster;
-    private $genero;
+class Movie extends BaseModel
+{
+  private $title;
+  private $release;
+  private $rating;
+  private $duration;
+  private $poster;
+  private $category;
+  private $description;
 
-    public function __construct(array $movie)
-    {
-        $this->id = $movie['id'];
-        $this->title = $movie['titulo'];
-        $this->estreno = $movie['estreno'];
-        $this->rating = $movie['rating'];
-        $this->duracion = $movie['duracion'];
-        $this->poster = $movie['poster'];
-        $this->genero = $movie['genero'];
-
-    }
     
-
-    public function getId() {
-      return $this->id;
-    }
-    public function setId($value) {
-      $this->id = $value;
-    }
 
     public function getTitle() {
       return $this->title;
@@ -36,11 +20,11 @@ class Movie{
       $this->title = $value;
     }
 
-    public function getEstreno() {
-      return $this->estreno;
+    public function getRelease() {
+      return $this->release;
     }
-    public function setEstreno($value) {
-      $this->estreno = $value;
+    public function setRelease($value) {
+      $this->release = $value;
     }
 
     public function getRating() {
@@ -50,11 +34,11 @@ class Movie{
       $this->rating = $value;
     }
 
-    public function getDuracion() {
-      return $this->duracion;
+    public function getDuration() {
+      return $this->duration;
     }
-    public function setDuracion($value) {
-      $this->duracion = $value;
+    public function setDuration($value) {
+      $this->duration = $value;
     }
 
     public function getPoster() {
@@ -64,10 +48,17 @@ class Movie{
       $this->poster = $value;
     }
 
-    public function getGenero() {
-      return $this->genero;
+    public function getCategory() {
+      return $this->category;
     }
-    public function setGenero($value) {
-      $this->genero = $value;
+    public function setCategory($value) {
+      $this->category = $value;
+    }
+
+    public function getDescription() {
+      return $this->description;
+    }
+    public function setDescription($value) {
+      $this->description = $value;
     }
 }

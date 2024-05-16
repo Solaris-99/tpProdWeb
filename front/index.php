@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__.'/dataAccess/Dao.php';
-require_once __DIR__.'/dataAccess/MovieDaoMySql.php';
-require_once __DIR__.'/entity/Movie.php';
-require_once __DIR__.'/business/MovieBusiness.php';
+require_once __DIR__.'/../dataAccess/Dao.php';
+require_once __DIR__.'/../dataAccess/MovieDaoMySql.php';
+require_once __DIR__.'/../entity/Movie.php';
+require_once __DIR__.'/../business/MovieBusiness.php';
 
 $movieBusiness = new MovieBusiness();
-$peliculas = $movieBusiness->all();
+$peliculas = $movieBusiness->all([]);
 
 ?>
 
@@ -59,9 +59,9 @@ $peliculas = $movieBusiness->all();
                                 <h5 class="card-title text-truncate  fw-bold"><?php echo $pelicula->getTitle(); ?></h5>
                             </a>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item" class="d-block" style="height:4rem"><strong>Genero: </strong><?php echo $pelicula->getGenero(); ?></li>
                                 <li class="list-group-item"><strong>Rating: </strong><?php echo $pelicula->getRating(); ?></li>
-                                <li class="list-group-item"><strong>Duración: </strong><?php echo $pelicula->getDuracion(); ?></li>
+                                <li class="list-group-item"><strong>Duración: </strong><?php echo $pelicula->getDuration(); ?></li>
+                                <li class="list-group-item"><strong>Géneros: </strong><?php echo $movieBusiness->getCategories($pelicula->getId()); ?></li>
                             </ul>
                         </div>
                     </div>
