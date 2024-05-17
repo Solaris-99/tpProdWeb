@@ -10,7 +10,7 @@ class Movie extends BaseModel
   private $poster;
   private $category;
   private $description;
-
+  private $price;
     
 
     public function getTitle() {
@@ -60,5 +60,12 @@ class Movie extends BaseModel
     }
     public function setDescription($value) {
       $this->description = $value;
+    }
+
+    public function getPrice() {
+      return $this->price;
+    }
+    public function setPrice($value) {
+      $this->price = $value;
     }
 }

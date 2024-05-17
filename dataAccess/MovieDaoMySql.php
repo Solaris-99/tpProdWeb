@@ -23,19 +23,18 @@ class MovieDaoMySql extends Dao
         $sql = 'SELECT * FROM movie';
         $bindings = [];
         if(!empty($filter)){
-            $sql .= " WHERE";
-            foreach($filter as $key => $val){
-                $sql.= " $key = :$key AND";
-                $bindings[":$key"] = $val;
-            }    
+            $filters = [];
+            $sql .= " WHERE ";
+            if(isset($filter['release'])){
+                $bindings[":release_min"] = $filter['release'] . '-01-01';
+                $bindings[":release_max"] = $filter['release'] . '-12-31';
+                array_push($filters,"`release` >= :release_min AND `release` <= :release_max");
+            }
+            $sql .=  implode( " AND ", $filters);
         }
+
         $stmt = $this->pdo->prepare($sql);
-        if(!empty($filter)){
-            $stmt->execute($bindings);
-        }
-        else{
-            $stmt->execute();
-        }
+        $stmt->execute($bindings);
         
         $movies = $stmt->fetchAll(PDO::FETCH_CLASS,'Movie');
         return $movies;

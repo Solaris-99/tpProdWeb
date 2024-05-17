@@ -6,7 +6,7 @@ require_once __DIR__.'/../entity/Movie.php';
 require_once __DIR__.'/../business/MovieBusiness.php';
 
 $movieBusiness = new MovieBusiness();
-$peliculas = $movieBusiness->all([]);
+$peliculas = $movieBusiness->all($_GET);
 
 ?>
 
@@ -31,8 +31,8 @@ $peliculas = $movieBusiness->all([]);
             <div class="col-md-8">
                 <form id="form" action="index.php" method="GET">
                     <div class="form-group">
-                        <label for="fecha"></label>
-                        <select name="fecha" id="fecha" class="form-control">
+                        <label for="release"></label>
+                        <select name="release" id="release" class="form-control">
                             <?php for ($i = 2012; $i <= 2024; $i++) : ?>
                                 <option value="<?php echo $i ?>"><?php echo $i ?></option>
                             <?php endfor; ?>
@@ -42,7 +42,7 @@ $peliculas = $movieBusiness->all([]);
             </div>
             <div class="col-md-4  mt-auto">
                 <button class="btn btn-primary" form="form" type="submit">Filtrar</button>
-                <?php if (isset($_GET["fecha"])) : ?>
+                <?php if (isset($_GET["release"])) : ?>
                     <a href="index.php" class="btn btn-primary">Limpiar</a>
                 <?php endif ?>
             </div>
