@@ -8,9 +8,11 @@ class Movie extends BaseModel
   private $rating;
   private $duration;
   private $poster;
-  private $category;
   private $description;
   private $price;
+  // private $category;
+    
+
     
 
     public function getTitle() {
@@ -48,13 +50,6 @@ class Movie extends BaseModel
       $this->poster = $value;
     }
 
-    public function getCategory() {
-      return $this->category;
-    }
-    public function setCategory($value) {
-      $this->category = $value;
-    }
-
     public function getDescription() {
       return $this->description;
     }
@@ -68,4 +63,11 @@ class Movie extends BaseModel
     public function setPrice($value) {
       $this->price = $value;
     }
+
+        // public function getCategory() {
+    //   return $this->category;
+    // }
+    // public function setCategory($value) {
+    //   $this->category = $value;
+    // }
 }

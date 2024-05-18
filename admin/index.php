@@ -9,16 +9,17 @@
             <div id="content">
                 <?php include_once __DIR__ . '/./partials/nav.php' ?>
                 <div class="container-fluid">
-
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-
+                    <h1 class="h3 mb-4 text-gray-800">Administrador de datos</h1>
                 </div>
+                <ul>
+                    <?php foreach($tables as $k => $t): ?>
+                        <li><a href='./tables.php?t=<?php echo $k ?>'><?php echo $t ?></a></li>
+                    <?php endforeach ?>
+                </ul>
 
             </div>       
             <?php include_once __DIR__ . '/./partials/footer.php' ?>
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>

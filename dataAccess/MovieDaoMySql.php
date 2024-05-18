@@ -8,18 +8,25 @@ class MovieDaoMySql extends Dao
     public function __construct()
     {   
         global $con;
-        $this->pdo = $con;     
+        $this->pdo = $con;
+        $this->table = 'movie';
     }
 
-    public function find($id){
+    public function find($id, $as_array = false){
         $stmt = $this->pdo->prepare('SELECT * FROM movie WHERE id = ?');
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Movie'); 
+        if(true){
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        }
+        else{
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Movie'); 
+        }
+
         $stmt->execute([$id]);
         $pelicula = $stmt->fetch();
         return $pelicula;
     }
 
-    public function all(array $filter){
+    public function all(array $filter, $as_array = false){
         $sql = 'SELECT * FROM movie';
         $bindings = [];
         if(!empty($filter)){
@@ -35,8 +42,12 @@ class MovieDaoMySql extends Dao
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($bindings);
-        
-        $movies = $stmt->fetchAll(PDO::FETCH_CLASS,'Movie');
+        if($as_array){
+            $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else{
+            $movies = $stmt->fetchAll(PDO::FETCH_CLASS,'Movie');
+        }
         return $movies;
     }
 

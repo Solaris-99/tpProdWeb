@@ -3,8 +3,8 @@ abstract class BaseModel
 {
 
     protected $id;
-    protected $createdAt;
-    protected $updatedAt;
+    // protected $createdAt;
+    // protected $updatedAt;
 
 
     public function getId() {

@@ -1,41 +1,38 @@
 <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"><?php echo ucfirst($tablename) ?></h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <?php foreach ($columns as $col): ?>
+                            <th><?php echo $col ?></th>
+                            <?php endforeach ?>
+                            <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <?php foreach ($columns as $col): ?>
+                            <th><?php echo $col ?></th>
+                            <?php endforeach ?>
+                            <th>Acciones</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <?php foreach ($data as $d): ?>
+                        <tr>
+                            <?php foreach ($d as $val): ?>
+                                <td><?php echo $val ?></td>
+                                <?php endforeach ?>
+                                <td><a href="<?php echo $url_table ."?edit=".$d['id'] ?>">E</a> <a href="<?php echo $url_table ."?del=".$d['id'] ?>">D</a></td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
