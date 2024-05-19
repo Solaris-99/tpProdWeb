@@ -51,10 +51,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `category_movie` ;
 
 CREATE TABLE IF NOT EXISTS `category_movie` (
-  `id_category_movie` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_movie` INT UNSIGNED NOT NULL,
   `id_category` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_category_movie`),
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_category_movie_movie`
     FOREIGN KEY (`id_movie`)
     REFERENCES `movie` (`id`)

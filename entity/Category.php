@@ -5,7 +5,7 @@ require_once 'BaseModel.php';
 
 class Category extends BaseModel
 {
-    private $name;
+    private string $name;
     
     public function getName() {
       return $this->name;

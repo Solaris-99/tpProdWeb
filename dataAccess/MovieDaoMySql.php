@@ -14,7 +14,7 @@ class MovieDaoMySql extends Dao
 
     public function find($id, $as_array = false){
         $stmt = $this->pdo->prepare('SELECT * FROM movie WHERE id = ?');
-        if(true){
+        if( $as_array){
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
         }
         else{
@@ -61,7 +61,5 @@ class MovieDaoMySql extends Dao
         $stmt->execute([$id]);
         return $stmt->fetchAll();
     }
-
-
 }
 

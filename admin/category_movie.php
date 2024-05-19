@@ -1,27 +1,36 @@
 <?php
+require_once __DIR__ . '/../business/CategoryMovieBusiness.php';
 require_once __DIR__ . '/../business/MovieBusiness.php';
+require_once __DIR__ . '/../business/CategoryBusiness.php';
+
+$categoryMovieBusiness = new CategoryMovieBusiness();
 $movieBusiness = new MovieBusiness();
-$columns = $movieBusiness->getColumns();
-$data = $movieBusiness->all([], true);
-$tablename = "Movie";
-$url_table = "movie.php";
+$categoryBusiness = new CategoryBusiness();
+
+
+$movieSelectData = $movieBusiness->all([],true);
+$categorySelectData = $categoryBusiness->all([],true);
+$columns = ["ID","ID Película","ID Categoría","Película","Categoría"];
+$data = $categoryMovieBusiness->getMovieAndCategoryName(null,true, true);
+$tablename = "CategoryMovie";
+$url_table = "category_movie.php";
 
 if (isset($_POST['SAVE'])) {
 
     if(empty($_POST['id'])){
-        $movieBusiness->create($_POST);
+        $categoryMovieBusiness->create($_POST);
     }
     else{
-        $movieBusiness->update($_POST);
+        $categoryMovieBusiness->update($_POST);
     }
     header("location:$url_table");
 }
 
 if(isset($_GET['edit'])){
-    $mov = $movieBusiness->find($_GET['edit'], true);
+    $mov = $categoryMovieBusiness->find($_GET['edit'], true);
 }
 if (isset($_GET['del'])){
-    $movieBusiness->delete($_GET['del']);
+    $categoryMovieBusiness->delete($_GET['del']);
 }
 
 
@@ -65,34 +74,26 @@ if (isset($_GET['del'])){
                                 <h4>Añadir una nueva entrada</h4>
                                 <form class="user" action='' method='POST'>
                                     <div class='d-flex '>
-                                        <?php foreach ($columns as $col) : ?>
                                             <div class="form-group d-inline-block mr-2">
-                                                <label for="<?php echo $col ?>"><?php echo $col ?></label>
-                                                <?php 
-                                                    $input;
-                                                    $required;
-                                                    switch($col){
-                                                        case 'id';
-                                                        case 'rating';
-                                                            $input = 'number';
-                                                            $required = false;
-                                                            break;
-                                                        case 'price';
-                                                            $input = 'number';
-                                                            $required = true;
-                                                            break;
-                                                        case 'release';
-                                                            $input = 'date';
-                                                            break;
-                                                        default:
-                                                            $input = 'text';
-                                                            $required = true;
-                                                            break;
-                                                    }
-                                                ?>
-                                                <input type="<?php echo $input?>" class="form-control" id="<?php echo $col ?>" name='<?php echo $col ?>' <?php if($required){echo 'required';}?> value="<?php echo isset($mov)? $mov[$col] :"" ?>" >
+                                                <label>ID</label>
+                                                <input type="number" class="form-control" value="<?php if(isset($mov)){echo $mov['id']; }?>">
                                             </div>
-                                        <?php endforeach ?>
+                                            <div class="form-group d-inline-block mr-2 my-auto ">
+                                                <label for='id_movie' class='d-block'>ID Película</label>
+                                                <select class="form-select d-inline-block mr-2" name='id_movie' id='id_movie'>
+                                                    <?php foreach($movieSelectData as $val): ?>
+                                                        <option value="<?php echo $val['id'] ?>" <?php if(isset($mov)){if($mov['id_movie'] == $val['id']){echo "selected";} } ?> > <?php echo "ID: ".$val['id']." - " . $val['title'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group d-inline-block mr-2 my-auto">
+                                                <label for='id_category' class='d-block'>ID Categoría</label>
+                                                <select class=" form-select d-inline-block mr-2" name='id_category' id='id_category'>
+                                                    <?php foreach($categorySelectData as $val): ?>
+                                                        <option value="<?php echo $val['id'] ?>" <?php if(isset($mov)){if($mov['id_category'] == $val['id']){echo "selected";} } ?>  > <?php echo "ID: ".$val['id']." - " . $val['name'] ?></option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </div>
                                     </div>
                                     <input type='submit' name='SAVE' id='SAVE' class="btn w-25 mx-auto btn-primary btn-user btn-block" value="Guardar">
                                 </form>

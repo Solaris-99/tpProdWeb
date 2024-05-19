@@ -54,6 +54,4 @@ class MovieBusiness
         $this->dao->delete($id);
     }
 
-
-
 }

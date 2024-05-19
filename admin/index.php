@@ -12,9 +12,15 @@
                     <h1 class="h3 mb-4 text-gray-800">Administrador de datos</h1>
                 </div>
                 <ul>
-                    <?php foreach($tables as $k => $t): ?>
-                        <li><a href='./tables.php?t=<?php echo $k ?>'><?php echo $t ?></a></li>
-                    <?php endforeach ?>
+                    <li>
+                        <a href="./movie.php">Peliculas/Movies</a>
+                    </li>
+                    <li>
+                        <a href="./category.php">Categorias/Categories</a>
+                    </li>
+                    <li>
+                        <a href="./category_movie.php">Peliculas - categorias (Relación)</a>
+                    </li>
                 </ul>
 
             </div>       

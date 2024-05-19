@@ -1,27 +1,27 @@
 <?php
-require_once __DIR__ . '/../business/MovieBusiness.php';
-$movieBusiness = new MovieBusiness();
-$columns = $movieBusiness->getColumns();
-$data = $movieBusiness->all([], true);
-$tablename = "Movie";
-$url_table = "movie.php";
+require_once __DIR__ . '/../business/CategoryBusiness.php';
+$categoryBusiness = new categoryBusiness();
+$columns = $categoryBusiness->getColumns();
+$data = $categoryBusiness->all([], true);
+$tablename = "Category";
+$url_table = "category.php";
 
 if (isset($_POST['SAVE'])) {
 
     if(empty($_POST['id'])){
-        $movieBusiness->create($_POST);
+        $categoryBusiness->create($_POST);
     }
     else{
-        $movieBusiness->update($_POST);
+        $categoryBusiness->update($_POST);
     }
     header("location:$url_table");
 }
 
 if(isset($_GET['edit'])){
-    $mov = $movieBusiness->find($_GET['edit'], true);
+    $cat = $categoryBusiness->find($_GET['edit'], true);
 }
 if (isset($_GET['del'])){
-    $movieBusiness->delete($_GET['del']);
+    $categoryBusiness->delete($_GET['del']);
 }
 
 
@@ -73,16 +73,8 @@ if (isset($_GET['del'])){
                                                     $required;
                                                     switch($col){
                                                         case 'id';
-                                                        case 'rating';
                                                             $input = 'number';
                                                             $required = false;
-                                                            break;
-                                                        case 'price';
-                                                            $input = 'number';
-                                                            $required = true;
-                                                            break;
-                                                        case 'release';
-                                                            $input = 'date';
                                                             break;
                                                         default:
                                                             $input = 'text';
@@ -90,7 +82,7 @@ if (isset($_GET['del'])){
                                                             break;
                                                     }
                                                 ?>
-                                                <input type="<?php echo $input?>" class="form-control" id="<?php echo $col ?>" name='<?php echo $col ?>' <?php if($required){echo 'required';}?> value="<?php echo isset($mov)? $mov[$col] :"" ?>" >
+                                                <input type="<?php echo $input?>" class="form-control" id="<?php echo $col ?>" name='<?php echo $col ?>' <?php if($required){echo 'required';}?> value="<?php echo isset($cat)? $cat[$col] :"" ?>" >
                                             </div>
                                         <?php endforeach ?>
                                     </div>
