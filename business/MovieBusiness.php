@@ -20,13 +20,20 @@ class MovieBusiness
         return $movie; //validar si existe;
     }
 
-    public function all($array, $as_array = false){
-        $movies = $this->dao->all($array, $as_array);
+    public function all(array $filter, $as_array = false){
+        $movies = $this->dao->all($filter, $as_array);
         return $movies;
     }
 
-    public function getCategories($id){
-        $cats =  $this->dao->getCategories($id);
+    public function getCategories(int $id, bool $ids = false){
+
+
+        $cats =  $this->dao->getCategories($id, $ids);
+        if($ids){
+            //retornar un array de ids
+            $cats = array_merge(...$cats);
+            return $cats;
+        }
         $catsStr = '';
         foreach($cats as $c){
             $catsStr.= $c[0] . " ";
@@ -54,4 +61,7 @@ class MovieBusiness
         $this->dao->delete($id);
     }
 
+    public function getRelated(array $categories, $exclude_id){
+        return $this->dao->getRelated($categories, $exclude_id);
+    }
 }

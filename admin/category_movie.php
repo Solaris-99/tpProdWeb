@@ -38,7 +38,7 @@ if (isset($_GET['del'])){
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <?php include_once __DIR__ . '/./partials/head.php' ?>
 

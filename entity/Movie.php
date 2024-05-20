@@ -58,7 +58,7 @@ class Movie extends BaseModel
     }
 
     public function getPrice() {
-      return $this->price;
+      return "$$this->price";
     }
     public function setPrice($value) {
       $this->price = $value;
