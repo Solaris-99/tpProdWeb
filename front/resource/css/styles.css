@@ -1,0 +1,44 @@
+body {
+    background-color: #121212; /* Fondo oscuro */
+    color: #e0e0e0;           /* Texto claro */
+}
+
+/* Tema oscuro para card-body */
+.card, .card li {
+    background-color: #1e1e1e !important; /* Fondo un poco más claro que el body */
+    color: #e0e0e0 !important;            /* Texto claro */
+    border: 1px solid #444444;
+}
+
+/* Tema oscuro para inputs */
+input, textarea, select {
+    background-color: #333333; /* Fondo oscuro para inputs */
+    color: #e0e0e0;            /* Texto claro */
+    border: 1px solid #444444; /* Borde ligeramente más claro */
+}
+
+/* Colores para enlaces en el tema oscuro */
+a {
+    color: #1e88e5;            /* Color de enlace */
+}
+
+a:hover {
+    color: #bb86fc;            /* Color de enlace al pasar el cursor */
+}
+
+.hero{
+    color:black
+}
+
+nav, footer{
+    background-color: black !important;
+    color:white !important;
+}
+
+nav a{
+    color:white !important; 
+}
+
+nav{
+    border-bottom: solid 2px #333333;
+}

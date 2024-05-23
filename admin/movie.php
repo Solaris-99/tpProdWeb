@@ -56,7 +56,7 @@ if (isset($_GET['del'])){
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Administración de datos</h1>
+                    <h1 class="h3 mb-2">Administración de datos</h1>
                     <!-- Insert Form -->
 
                     <div class="col-xl-10 col-lg-12 col-md-9 mx-auto">

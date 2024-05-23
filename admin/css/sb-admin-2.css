@@ -9797,7 +9797,7 @@ a:focus {
 }
 
 #wrapper #content-wrapper {
-  background-color: #f8f9fc;
+  background-color: #222;
   width: 100%;
   overflow-x: hidden;
 }
@@ -11278,4 +11278,22 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+}
+
+nav, footer{
+  background-color: #333 !important;
+}
+
+#accordionSidebar{
+  background-color: #18181c !important;
+}
+
+.card, .card-header, input, select, .pagination li, .pagination li a, th, tr{
+  background-color: #18181c !important;
+  color: white !important;
+  border-color: #202020
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: white !important;
 }

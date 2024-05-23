@@ -1,9 +1,10 @@
 
 
-    <div lc-helper="background" class="container-fluid py-5 mb-4 d-flex justify-content-center" style="  background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1124&amp;q=100');
+    <div lc-helper="background" class="container-fluid py-5 mb-4 d-flex justify-content-center hero" style="
+    background-image: url('https://www.vanas.ca/images/blog/vfx-visual-effects-vanas.jpg');
     background-position: center;
-background-size:cover;
-background-repeat:no-repeat">
+    background-size:cover;
+    background-repeat:no-repeat">
         <div class="p-5 mb-4 lc-block col-xxl-7 col-lg-8 col-12" style=" backdrop-filter: blur(6px) saturate(102%);
     -webkit-backdrop-filter: blur(6px) saturate(102%);
     background-color: rgba(255, 255, 255, 0.45);
@@ -22,6 +23,7 @@ background-repeat:no-repeat">
                 </div>
             </div>
             <div class="lc-block">
+                <!-- Para registrarse -->
                 <a class="btn btn-dark" href="#" role="button">Empieza tu colección</a>
             </div>
         </div>

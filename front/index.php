@@ -17,7 +17,7 @@ $peliculas = $movieBusiness->all($_GET);
 <html lang="es">
 <?php include_once __DIR__ . '/partials/head.php' ?>
 
-<body>
+<body >
     <?php include_once __DIR__ . '/partials/nav.php' ?>
 
     <main class="container" style="min-height: 100%;">

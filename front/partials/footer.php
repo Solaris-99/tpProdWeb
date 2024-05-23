@@ -1,18 +1,13 @@
-
-
-
-
-
-    <section class="bg-dark text-light">
+    <footer class="text-light">
         <div class="container py-5">
-            <div class="row">
+            <div class="row d-flex justify-content-between">
                 <div class="col-lg-3">
                     <div class="lc-block mb-4">
-                        <img class="img-fluid" alt="logo" src="https://cdn.livecanvas.com/media/svg/undraw-sample/undraw_connected_world_wuay.svg" style="max-height:10vh">
+                        <img class="img-fluid" alt="Movie Cube" src="../front/resource/icon/logo.png" style="max-height:10vh">
                     </div>
                     <div class="lc-block small">
                         <div editable="rich">
-                            <p>I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper matti pibus leo.</p>
+                            <p>Disfruta del cine sin límites. Contáctanos en info@moviecube.com.</p>
                         </div>
                     </div>
                     <!-- /lc-block -->
@@ -37,63 +32,22 @@
                                 <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
                             </svg>
                         </a>
-                        <a class="text-decoration-none" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" lc-helper="svg-icon" fill="var(--bs-light)">
-                                <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
-                            </svg>
-                        </a>
                     </div>
 
                 </div>
                 <div class="col-lg-2 offset-lg-1">
                     <div class="lc-block mb-4">
                         <div editable="rich">
-                            <h4>Get Started</h4>
+                            <h4>MovieCube</h4>
                         </div>
                     </div>
                     <!-- /lc-block -->
                     <div class="lc-block small">
                         <div editable="rich">
-                            <p>Tutorial</p>
-                            <p>Resources
-                                <br>
-                            </p>
-                            <p>Docs</p>
-                            <p>Example</p>
-                        </div>
-                    </div>
-                    <!-- /lc-block -->
-                </div>
-                <div class="col-lg-2 offset-lg-1">
-                    <div class="lc-block mb-4">
-                        <div editable="rich">
-                            <h4>About us</h4>
-                        </div>
-                    </div>
-                    <!-- /lc-block -->
-                    <div class="lc-block small">
-                        <div editable="rich">
-                            <p>Story</p>
-                            <p>Work with us</p>
-                            <p>Blog</p>
-                            <p>News</p>
-                        </div>
-                    </div>
-                    <!-- /lc-block -->
-                </div>
-                <div class="col-lg-2 offset-lg-1">
-                    <div class="lc-block mb-4">
-                        <div editable="rich">
-                            <h4>Downloads</h4>
-                        </div>
-                    </div>
-                    <!-- /lc-block -->
-                    <div class="lc-block small">
-                        <div editable="rich">
-                            <p>Vertex 1.2</p>
-                            <p>Templates</p>
-                            <p>Sounds</p>
-                            <p>Gradients</p>
+                            <p><a href="index.php">Home</a></p>
+                            <p><a href="about.php">Sobre Nosotros</a></p>
+                            <p><a href="about.php#contacto">Contacto</a></p>
+                            <p><a href="termsAndConditions.php">Legal</a></p>
                         </div>
                     </div>
                     <!-- /lc-block -->
@@ -105,7 +59,7 @@
                 <div class="col-6 small">
                     <div class="lc-block">
                         <div editable="rich">
-                            <p>Copyright © My Company 2020</p>
+                            <p>© 2024 MovieCube. Todos los derechos reservados. </p>
                         </div>
                     </div>
                     <!-- /lc-block -->
@@ -114,8 +68,7 @@
                     <div class="lc-block">
                         <div editable="rich">
                             <p>
-                                <a class="text-decoration-none" href="#">License Details</a> -
-                                <a class="text-decoration-none" href="#">Terms &amp; Conditions</a>
+                                <a class="text-decoration-none" href="#">Terminos y condiciones</a>
                             </p>
                         </div>
                     </div>
@@ -123,6 +76,6 @@
                 </div>
             </div>
         </div>
-    </section>
+</footer>
 
     <!-- <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> -->
