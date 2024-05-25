@@ -41,8 +41,8 @@ class CategoryMovieBusiness
         $this->dao->delete($id);
     }
 
-    public function getMovieAndCategoryName(int $id = null, $as_array = false, $includeOtherIds = false){
-        return $this->dao->getMovieAndCategoryName($id, $as_array, $includeOtherIds);
+    public function getMovieAndCategoryName(int $id = null, $includeOtherIds = false){
+        return $this->dao->getMovieAndCategoryName($id, $includeOtherIds);
     }
 
 }

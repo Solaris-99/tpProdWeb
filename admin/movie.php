@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<?php include_once __DIR__ . '/./partials/head.php' ?>
+
 <?php
 require_once __DIR__ . '/../business/MovieBusiness.php';
 $movieBusiness = new MovieBusiness();
@@ -27,12 +32,6 @@ if (isset($_GET['del'])){
 
 ?>
 
-
-<!DOCTYPE html>
-<html lang="es">
-
-<?php include_once __DIR__ . '/./partials/head.php' ?>
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -57,6 +56,8 @@ if (isset($_GET['del'])){
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2">Administración de datos</h1>
+                    <p>No te olvides de agregar las categorias en la tabla de <a href="category_movie.php">categories/movies</a></p>
+
                     <!-- Insert Form -->
 
                     <div class="col-xl-10 col-lg-12 col-md-9 mx-auto">

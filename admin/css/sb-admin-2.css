@@ -11115,7 +11115,7 @@ form.user .btn-user {
   text-shadow: -1px 0 #e74a3b;
   top: 0;
   color: #5a5c69;
-  background: #f8f9fc;
+  background: #33333320;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
   animation: noise-anim 2s infinite linear alternate-reverse;
@@ -11260,7 +11260,7 @@ form.user .btn-user {
   text-shadow: 1px 0 #4e73df;
   top: 0;
   color: #5a5c69;
-  background: #f8f9fc;
+  background: #33333320;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
   animation: noise-anim-2 3s infinite linear alternate-reverse;

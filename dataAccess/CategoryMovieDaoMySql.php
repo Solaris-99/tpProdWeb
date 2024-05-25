@@ -41,7 +41,7 @@ class CategoryMovieDaoMySql extends Dao
         return $data;
     }
 
-    public function getMovieAndCategoryName(int $id = null,$as_array = false, $includeOtherIds = false){
+    public function getMovieAndCategoryName(int $id = null, $includeOtherIds = false){
         $otherIds = "";
         if($includeOtherIds){
             $otherIds = ", category_movie.id_movie, category_movie.id_category";
@@ -55,11 +55,8 @@ class CategoryMovieDaoMySql extends Dao
             $sql .= " WHERE id_category_movie = ?";
         }
         $stmt = $this->pdo->prepare($sql);
-        if ($as_array) {
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        } else {
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'CategoryMovie');
-        }
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
         if($id!=null){
             $stmt->execute([$id]);
             $data = $stmt->fetch();

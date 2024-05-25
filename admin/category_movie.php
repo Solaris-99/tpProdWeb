@@ -11,7 +11,7 @@ $categoryBusiness = new CategoryBusiness();
 $movieSelectData = $movieBusiness->all([],true);
 $categorySelectData = $categoryBusiness->all([],true);
 $columns = ["ID","ID Película","ID Categoría","Película","Categoría"];
-$data = $categoryMovieBusiness->getMovieAndCategoryName(null,true, true);
+$data = $categoryMovieBusiness->getMovieAndCategoryName(null, true);
 $tablename = "CategoryMovie";
 $url_table = "category_movie.php";
 
@@ -76,7 +76,7 @@ if (isset($_GET['del'])){
                                     <div class='d-flex '>
                                             <div class="form-group d-inline-block mr-2">
                                                 <label>ID</label>
-                                                <input type="number" class="form-control" value="<?php if(isset($mov)){echo $mov['id']; }?>">
+                                                <input type="number" class="form-control" value="<?php if(isset($mov)){echo $mov['id']; }?>" min='1'>
                                             </div>
                                             <div class="form-group d-inline-block mr-2 my-auto ">
                                                 <label for='id_movie' class='d-block'>ID Película</label>

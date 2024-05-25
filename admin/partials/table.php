@@ -27,7 +27,7 @@
                             <?php foreach ($d as $val): ?>
                                 <td><?php echo $val ?></td>
                                 <?php endforeach ?>
-                                <td><a href="<?php echo $url_table ."?edit=".$d['id'] ?>">E</a> <a href="<?php echo $url_table ."?del=".$d['id'] ?>">D</a></td>
+                                <td><a href="<?php echo $url_table ."?edit=".$d['id'] ?>" class ='btn btn-warning btn-circle btn-sm text-dark'>M</a> <a href="<?php echo $url_table ."?del=".$d['id'] ?>" class='btn btn-danger btn-circle btn-sm'><i class="fas fa-trash"></i></a></td>
                         </tr>
                     <?php endforeach ?>
                     </tr>
