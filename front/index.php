@@ -7,7 +7,15 @@
     $movieBusiness = new MovieBusiness();
     $categoryBusiness = new CategoryBusiness();
     $categorySelectData = $categoryBusiness->all([],true);
-    $peliculas = $movieBusiness->all($_GET);
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+        if($page < 0){$page = 0;}
+    }
+    else{
+        $page = 0;
+    }   
+    $peliculas = $movieBusiness->all($_GET,false,$page);
+    $numPages = $movieBusiness->getNumOfPages();
 
 ?>
 
@@ -45,12 +53,40 @@
                 <h2>No se encontraron películas</h2>
             </div>
         <?php endif?>
+        <section class='container'>
+            <?php foreach ($peliculas as $pelicula) : ?>
+                <?php include __DIR__ . '/partials/card.php' ?>
+            <?php endforeach ?>
+        </section>
+        <?php if($numPages>1):?>
+        <nav aria-label="paginado" class='pagination-nav mx-auto w-fit h-fit' data-bs-theme="dark">
+            <ul class="pagination">
+                <?php if($page > 0 ):?>
+                    <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page-1?>">Anterior</a></li>
+                <?php endif?>
+                    <?php if($page > 2 ):?>
+                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page-2?>"><?php echo $page-3 ?></a></li>
+                    <?php endif?>
+                    <?php if($page > 1 ):?>
+                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page-1?>"><?php echo $page-2 ?></a></li>
+                    <?php endif?>
+                    
 
-        <?php foreach ($peliculas as $pelicula) : ?>
-            <?php include __DIR__ . '/partials/card.php' ?>
-        <?php endforeach ?>
+                    <li class="page-item page-link"> <?php echo $page+1 ?></li>
+                    <?php if($page +1 < $numPages ):?>
+                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page+1?>"><?php echo $page+2 ?></a></li>
+                    <?php endif?>
+                    <?php if($page +2 < $numPages ):?>
+                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page+2?>"><?php echo $page+3 ?></a></li>
+                    <?php endif?>
 
+                <?php if($page+1 != $numPages ):?>
+                    <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page+1?>">Siguiente</a></li>
+                <?php endif?>
 
+            </ul>
+        </nav>
+        <?php endif?>
     </main>
     <?php include_once __DIR__ . '/partials/footer.php' ?>
 

@@ -12,7 +12,7 @@ class MovieDaoMySql extends Dao
         $this->table = 'movie';
     }
 
-    public function find($id, $as_array = false){
+    public function find(int $id, bool $as_array = false){
         $stmt = $this->pdo->prepare('SELECT * FROM movie WHERE id = ?');
         if( $as_array){
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -26,7 +26,8 @@ class MovieDaoMySql extends Dao
         return $pelicula;
     }
 
-    public function all(array $filter, $as_array = false){
+    public function all(array $filter, bool $as_array = false, int $page = null){
+        $moviesPerPage = 10; // podría pasarse como parametro.
         $sql = 'SELECT movie.id, movie.title, movie.release, movie.poster, movie.duration, movie.rating, movie.description, movie.price FROM movie';
         $bindings = [];
 
@@ -54,7 +55,18 @@ class MovieDaoMySql extends Dao
                 $bindings[":price"] = $filter["price"];
                 array_push($filters, "price <= :price");
             }
+
             $sql .=  implode( " AND ", $filters);
+        }
+        if(!is_null($page)){
+            $limitInf = $page*$moviesPerPage;
+            $limitUpp = $limitInf+$moviesPerPage;
+            if($page == 0){
+                $sql .= " LIMIT $limitUpp";
+            }
+            else{
+                $sql.= " LIMIT $limitInf, $limitUpp";
+            }
         }
 
         $stmt = $this->pdo->prepare($sql);
@@ -83,7 +95,7 @@ class MovieDaoMySql extends Dao
         return $stmt->fetchAll();
     }
 
-    public function getRelated(array $categories, $exclude_id){
+    public function getRelated(array $categories, bool $exclude_id){
         $sql = "SELECT movie.id, movie.title,  movie.poster FROM movie
         INNER JOIN category_movie ON category_movie.id_movie = movie.id
         INNER JOIN category ON  category_movie.id_category = category.id
@@ -103,7 +115,7 @@ class MovieDaoMySql extends Dao
     }
 
     public function getMovieCount(){
-        $stmt = $this->pdo->prepare("SELECT COUNT(1) FROM MOVIES");
+        $stmt = $this->pdo->prepare("SELECT COUNT(1) FROM MOVIE");
         $stmt->execute();
         return $stmt->fetch();
     }

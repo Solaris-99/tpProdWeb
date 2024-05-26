@@ -27,9 +27,10 @@ class MovieBusiness
         return $movie; //validar si existe;
     }
 
-    public function all(array $filter, $as_array = false){
+    public function all(array $filter, bool $as_array = false, int $page = null){
+        unset($filter['page']);
         try{
-            $movies = $this->dao->all($filter, $as_array);
+            $movies = $this->dao->all($filter, $as_array, $page);
         }
         catch(PDOException $e){
             throw new RedirectException("./500.php","Por el momento el sitio no está disponible. Nos disculpamos");
@@ -115,6 +116,6 @@ class MovieBusiness
     }
 
     public function getNumOfPages(){
-        return $this->dao->getMovieCount()/10;
+        return ceil($this->dao->getMovieCount()[0]/10);
     }
 }
