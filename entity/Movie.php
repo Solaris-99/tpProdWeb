@@ -3,13 +3,13 @@ require_once 'BaseModel.php';
 
 class Movie extends BaseModel
 {
-  private $title;
-  private $release;
-  private $rating;
-  private $duration;
-  private $poster;
-  private $description;
-  private $price;
+  private string $title;
+  private string $release;
+  private string $rating;
+  private string $duration;
+  private string $poster;
+  private string $description;
+  private string $price;
   // private $category;
     
 
@@ -23,7 +23,8 @@ class Movie extends BaseModel
     }
 
     public function getRelease() {
-      return $this->release;
+      $arr = explode("-",$this->release);
+      return "$arr[2]/$arr[1]/$arr[0]";
     }
     public function setRelease($value) {
       $this->release = $value;
