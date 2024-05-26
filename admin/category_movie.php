@@ -1,7 +1,11 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<?php include_once __DIR__ . '/./partials/head.php' ?>
+
 <?php
-require_once __DIR__ . '/../business/CategoryMovieBusiness.php';
-require_once __DIR__ . '/../business/MovieBusiness.php';
-require_once __DIR__ . '/../business/CategoryBusiness.php';
+
 
 $categoryMovieBusiness = new CategoryMovieBusiness();
 $movieBusiness = new MovieBusiness();
@@ -37,10 +41,8 @@ if (isset($_GET['del'])){
 ?>
 
 
-<!DOCTYPE html>
-<html lang="es">
 
-<?php include_once __DIR__ . '/./partials/head.php' ?>
+
 
 <body id="page-top">
 

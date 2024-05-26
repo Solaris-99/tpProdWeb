@@ -6,6 +6,8 @@
  - Levantar un error si ocurre algun otro error
 
 ## front
- - Paginado
+ - Paginado: Order by id y limit, where id is tanto, e ir cambiando según la página.
  - Busqueda de peliculas
 
+## error
+ - RedirectException: Guardar el mensaje en la sesion, y para luego poder mostrarlo en la página.

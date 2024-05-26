@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__.'/../dataAccess/CategoryMovieDaoMySql.php';
+require_once __DIR__.'/../helpers/errors/RedirectException.php';
+
 
 class CategoryMovieBusiness 
 {
@@ -12,12 +14,23 @@ class CategoryMovieBusiness
     }
 
     public function find($id, $as_array = false){
-        $data = $this->dao->find($id, $as_array);
+        try{
+            $data = $this->dao->find($id, $as_array);
+        }
+        catch(PDOException $e){
+            throw new RedirectException("./500.php", "Una relación de categoría/película no fue encontrada");
+        }
         return $data; //validar si existe;
     }
 
     public function all($array, $as_array = false){
-        $data = $this->dao->all($array, $as_array);
+        try{
+            $data = $this->dao->all($array, $as_array);
+        }
+        catch(PDOException $e){
+            throw new RedirectException("./500.php", "Las relaciones de categoría/película no están disponibles");
+        }
+       
         return $data;
     }
 
@@ -28,17 +41,36 @@ class CategoryMovieBusiness
     public function create(array $data){
         unset($data['id']);
         unset($data['SAVE']);
-        $this->dao->create($data);
+
+        try{
+            $this->dao->create($data);
+
+        }
+        catch(PDOException $e){
+            throw new RedirectException("./500.php", "No se pudo crear la nueva relación de categoría/película");
+        }
     }
     
     //TODO: Try catch
     public function update(array $data){
         unset($data['SAVE']);
-        $this->dao->update($data);
+        
+        try{
+            $this->dao->update($data);
+        }
+        catch(PDOException $e){
+            throw new RedirectException("./500.php", "No se pudo editar la relación de categoría/película");
+        }
     }
 
     public function delete(int $id){
-        $this->dao->delete($id);
+       
+        try{
+            $this->dao->delete($id);
+        }
+        catch(PDOException $e){
+            throw new RedirectException("./500.php", "No se pudo borrar la relación de categoría/película");
+        }
     }
 
     public function getMovieAndCategoryName(int $id = null, $includeOtherIds = false){

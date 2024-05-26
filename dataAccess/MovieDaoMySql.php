@@ -100,8 +100,12 @@ class MovieDaoMySql extends Dao
         $stmt->execute($categories);
         $movies = $stmt->fetchAll(PDO::FETCH_CLASS,'Movie');
         return $movies;
+    }
 
-
+    public function getMovieCount(){
+        $stmt = $this->pdo->prepare("SELECT COUNT(1) FROM MOVIES");
+        $stmt->execute();
+        return $stmt->fetch();
     }
 }
 

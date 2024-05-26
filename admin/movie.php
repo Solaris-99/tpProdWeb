@@ -4,7 +4,7 @@
 <?php include_once __DIR__ . '/./partials/head.php' ?>
 
 <?php
-require_once __DIR__ . '/../business/MovieBusiness.php';
+
 $movieBusiness = new MovieBusiness();
 $columns = $movieBusiness->getColumns();
 $data = $movieBusiness->all([], true);

@@ -2,6 +2,9 @@
     <?php
         require_once __DIR__ . "/../../config/exception_handler.php";
         require_once __DIR__ . "/../../helpers/errors/RedirectException.php";
+        require_once __DIR__ . '/../../business/CategoryBusiness.php';
+        require_once __DIR__ . '/../../business/CategoryMovieBusiness.php';
+        require_once __DIR__ . '/../../business/MovieBusiness.php';
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

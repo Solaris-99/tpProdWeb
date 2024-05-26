@@ -1,5 +1,9 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<?php include_once __DIR__ . '/./partials/head.php' ?>
 <?php
-require_once __DIR__ . '/../business/CategoryBusiness.php';
+
 $categoryBusiness = new categoryBusiness();
 $columns = $categoryBusiness->getColumns();
 $data = $categoryBusiness->all([], true);
@@ -7,7 +11,6 @@ $tablename = "Category";
 $url_table = "category.php";
 
 if (isset($_POST['SAVE'])) {
-
     if(empty($_POST['id'])){
         $categoryBusiness->create($_POST);
     }
@@ -26,13 +29,6 @@ if (isset($_GET['del'])){
 
 
 ?>
-
-
-<!DOCTYPE html>
-<html lang="es">
-
-<?php include_once __DIR__ . '/./partials/head.php' ?>
-
 <body id="page-top">
 
     <!-- Page Wrapper -->

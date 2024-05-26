@@ -1,6 +1,6 @@
 <?php
-
 require_once __DIR__.'/../dataAccess/CategoryDaoMySql.php';
+require_once __DIR__.'/../helpers/errors/RedirectException.php';
 
 class CategoryBusiness 
 {
@@ -13,7 +13,14 @@ class CategoryBusiness
 
     public function find($id, $as_array = false){
         $category = $this->dao->find($id, $as_array);
-        return $category; //validar si existe;
+        if(empty($category) && !$as_array){
+            return "No hay categorías para mostrar";
+        }
+        else if (empty($category)){
+            //vacío y es requerido como array (páginas de adm)
+            throw new RedirectException("./500.php", "Una categoría no fue encontrada");
+        }
+        return $category;
     }
 
     public function all($array, $as_array = false){
@@ -28,17 +35,33 @@ class CategoryBusiness
     public function create(array $data){
         unset($data['id']);
         unset($data['SAVE']);
-        $this->dao->create($data);
+        try{
+            $this->dao->create($data);
+        }
+        catch (PDOException $e){
+            throw new RedirectException("./500.php", "Ocurrio un error creando la categoría");
+        }
     }
     
     //TODO: Try catch
     public function update(array $data){
         unset($data['SAVE']);
-        $this->dao->update($data);
+        try{
+            $this->dao->update($data);
+        }
+        catch (PDOException $e){
+            throw new RedirectException("./500.php", "Ocurrio un error actualizando la categoría");
+        }
     }
 
     public function delete(int $id){
-        $this->dao->delete($id);
+       
+        try{
+            $this->dao->delete($id);
+        }
+        catch (PDOException $e){
+            throw new RedirectException("./500.php", "Ocurrio un error eliminando la categoría");
+        }
     }
 
 
