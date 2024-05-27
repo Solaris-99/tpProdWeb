@@ -4,11 +4,11 @@ require_once 'BaseModel.php';
 class Movie extends BaseModel
 {
   private string $title;
-  private string $release;
-  private string $rating;
-  private string $duration;
-  private string $poster;
-  private string $description;
+  private ?string $release;
+  private ?string $rating;
+  private ?string $duration;
+  private ?string $poster;
+  private ?string $description;
   private string $price;
   // private $category;
     

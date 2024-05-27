@@ -1,3 +1,6 @@
+## General
+agregar una carpeta app y refactorizar
+
 ## back
  - Agregar un modal de error a todas las páginas para informar al usuario
 
