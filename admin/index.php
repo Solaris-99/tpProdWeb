@@ -11,8 +11,8 @@
                 <div class="container-fluid">
                     <h1 class="h3 mb-4">Administrador de datos</h1>
                 </div>
-                <section class='d-flex'>
-                <div class="col-xl-3 col-md-6 mb-4">
+                <section class='container'>
+                <div class="col-xl-12 col-md-8 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 mb-4">
+                <div class="col-xl-12 col-md-8 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-md-6 mb-4">
+                <div class="col-xl-12 col-md-8 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">

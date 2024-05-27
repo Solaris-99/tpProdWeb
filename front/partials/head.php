@@ -1,10 +1,10 @@
 <?php
-require_once __DIR__ . '/../../dataAccess/Dao.php';
-require_once __DIR__ . '/../../dataAccess/MovieDaoMySql.php';
-require_once __DIR__ . '/../../entity/Movie.php';
-require_once __DIR__ . '/../../business/MovieBusiness.php';
-require_once __DIR__ . '/../../business/CategoryBusiness.php';
-require_once __DIR__ . '/../../config/exception_handler.php';
+require_once __DIR__ . '/../../app/dataAccess/Dao.php';
+require_once __DIR__ . '/../../app/dataAccess/MovieDaoMySql.php';
+require_once __DIR__ . '/../../app/entity/Movie.php';
+require_once __DIR__ . '/../../app/business/MovieBusiness.php';
+require_once __DIR__ . '/../../app/business/CategoryBusiness.php';
+require_once __DIR__ . '/../../app/config/exception_handler.php';
 
 ?>
 

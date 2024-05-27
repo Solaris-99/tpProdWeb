@@ -1,10 +1,10 @@
 <head>
     <?php
-        require_once __DIR__ . "/../../config/exception_handler.php";
-        require_once __DIR__ . "/../../helpers/errors/RedirectException.php";
-        require_once __DIR__ . '/../../business/CategoryBusiness.php';
-        require_once __DIR__ . '/../../business/CategoryMovieBusiness.php';
-        require_once __DIR__ . '/../../business/MovieBusiness.php';
+        require_once __DIR__ . "/../../app/config/exception_handler.php";
+        require_once __DIR__ . "/../../app/helpers/errors/RedirectException.php";
+        require_once __DIR__ . '/../../app/business/CategoryBusiness.php';
+        require_once __DIR__ . '/../../app/business/CategoryMovieBusiness.php';
+        require_once __DIR__ . '/../../app/business/MovieBusiness.php';
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
