@@ -1,15 +1,14 @@
 <?php
+require_once 'BaseModel.php';
 
-class user{
-    private string $id;
+
+
+class user extends BaseModel{
     private string $username;
     private string $email;
     private string $password;// eliminar? - y llamar cuando sea necesario
     private string $role_id;
 
-    public function getId(){
-        return $this->id;
-    }
     public function getUsername(){
         return $this->username;
     }

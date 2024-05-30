@@ -48,10 +48,7 @@ abstract class Dao
             $vals[":$key"] = $val;
         }
         $sql .= implode(", ", $setClausules);
-
         $sql .= " WHERE `id` = :id";
-        var_dump($sql);
-        var_dump($vals);
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($vals);
     }

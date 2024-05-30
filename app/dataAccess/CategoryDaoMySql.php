@@ -26,6 +26,7 @@ class CategoryDaoMySql extends Dao
         $stmt->execute();
         $cats = $stmt->fetchAll();
         return $cats;
+        
     }
 
 
