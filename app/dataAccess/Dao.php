@@ -6,8 +6,9 @@ abstract class Dao
     protected $pdo;
     protected string $table;
     protected string $entityName;
+    
     public function all(array $filter, bool $as_array = false)    {
-        $stmt = $this->pdo->prepare("SELECT * FROM " . $this->table);
+        $stmt = $this->pdo->prepare("SELECT * FROM $this->table");
         if ($as_array) {
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
         } else {
@@ -19,7 +20,7 @@ abstract class Dao
     }
 
     public function find(int $id, bool $as_array = false){
-        $stmt = $this->pdo->prepare('SELECT * FROM '. $this->table .' WHERE id = ?');
+        $stmt = $this->pdo->prepare("SELECT * FROM $this->table WHERE id = ?");
         if( $as_array){
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
         }
