@@ -10,21 +10,9 @@ class MovieDaoMySql extends Dao
         global $con;
         $this->pdo = $con;
         $this->table = 'movie';
+        $this->entityName = 'Movie'
     }
 
-    public function find(int $id, bool $as_array = false){
-        $stmt = $this->pdo->prepare('SELECT * FROM movie WHERE id = ?');
-        if( $as_array){
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        }
-        else{
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Movie'); 
-        }
-
-        $stmt->execute([$id]);
-        $pelicula = $stmt->fetch();
-        return $pelicula;
-    }
 
     public function all(array $filter, bool $as_array = false, int $page = null){
         $moviesPerPage = 10; // podría pasarse como parametro.

@@ -5,9 +5,34 @@ abstract class Dao
 {
 
     protected $pdo;
-    protected $table;
-    abstract public function all(array $filter);
-    abstract public function find(int $id);
+    protected string $table;
+    protected string $entityName;
+    public function all(array $filter, bool $as_array = false)    {
+        $stmt = $this->pdo->prepare("SELECT * FROM " . $this->table);
+        if ($as_array) {
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        } else {
+            $stmt->setFetchMode(PDO::FETCH_CLASS, $this->entityName);
+        }
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        return $data;
+    }
+
+    public function find(int $id, bool $as_array = false){
+        $stmt = $this->pdo->prepare('SELECT * FROM '. $this->table .' WHERE id = ?');
+        if( $as_array){
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        }
+        else{
+            $stmt->setFetchMode(PDO::FETCH_CLASS, $this->entityName); 
+        }
+
+        $stmt->execute([$id]);
+        $data = $stmt->fetch();
+        return $data;
+    }
+
 
     public function getColumns()
     {

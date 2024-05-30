@@ -13,32 +13,7 @@ class CategoryMovieDaoMySql extends Dao
         global $con;
         $this->pdo = $con;
         $this->table = 'category_movie';
-    }
-
-    public function all($filter, $as_array = false)
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM category_movie");
-        if ($as_array) {
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        } else {
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'CategoryMovie');
-        }
-        $stmt->execute();
-        $data = $stmt->fetchAll();
-        return $data;
-    }
-
-
-    public function find($id, $as_array = false){
-        $stmt = $this->pdo->prepare("SELECT * FROM category_movie WHERE id = ?");
-        if ($as_array) {
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        } else {
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'CategoryMovie');
-        }
-        $stmt->execute([$id]);
-        $data = $stmt->fetch();
-        return $data;
+        $this->entityName = 'CategoryMovie';
     }
 
     public function getMovieAndCategoryName(int $id = null, $includeOtherIds = false){
