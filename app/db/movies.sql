@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `movie` (
   `poster` VARCHAR(200) NULL,
   `duration` VARCHAR(45) NULL,
   `rating` TINYINT UNSIGNED NULL,
-  `description` VARCHAR(500) NULL,
+  `description` VARCHAR(500) NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -68,9 +68,68 @@ CREATE TABLE IF NOT EXISTS `category_movie` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `role`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `role` ;
+
+CREATE TABLE IF NOT EXISTS `role` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `permission_level` INT NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user` ;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(20) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  `id_role` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_user_role1`
+    FOREIGN KEY (`id_role`)
+    REFERENCES `role` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE UNIQUE INDEX `email_UNIQUE` ON `user` (`email` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `movie_user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `movie_user` ;
+
+CREATE TABLE IF NOT EXISTS `movie_user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_movie` INT UNSIGNED NOT NULL,
+  `id_user` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_movie_user_movie1`
+    FOREIGN KEY (`id_movie`)
+    REFERENCES `movie` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_movie_user_user1`
+    FOREIGN KEY (`id_user`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 
 
