@@ -1,16 +1,14 @@
 ## General
-agregar una carpeta app y refactorizar
+~~agregar una carpeta app y refactorizar~~
 
-## back
- - Agregar un modal de error a todas las páginas para informar al usuario
+## feat
+ - entities: user, role
+ - dao: user, role, movie_user
+ - business: user, role, movie_user
+ - vistas: user, role, movie_user en back. movies que el usuario tenga en front. Login en ambas.
+ - implementar sesiones
+ - auth: agregar autenticación y lógica de negocios
 
-## Business logic
- - Verificar tipos y si falta algo obligatorio: devovler mensaje con error
- - Levantar un error si ocurre algun otro error
-
-## front
- - Paginado: Order by id y limit, where id is tanto, e ir cambiando según la página.
- - Busqueda de peliculas
 
 ## error
  - RedirectException: Guardar el mensaje en la sesion, y para luego poder mostrarlo en la página.
