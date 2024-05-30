@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . '/../entity/Movie.php';
 
 abstract class Dao
 {

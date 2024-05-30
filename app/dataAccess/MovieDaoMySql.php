@@ -10,7 +10,7 @@ class MovieDaoMySql extends Dao
         global $con;
         $this->pdo = $con;
         $this->table = 'movie';
-        $this->entityName = 'Movie'
+        $this->entityName = 'Movie';
     }
 
 
