@@ -14,7 +14,8 @@
             <label for="username">
                 Nombre de usuario
                 <input type="text" id='username' name='username' required>
-            </label>            
+            </label>
+            <input type="submit">
         </form>
         <p>¿Nuevo en MovieCube? Registrate <a href="register.php">aquí</a></p>
     </main>

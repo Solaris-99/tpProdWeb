@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php $PAGE_TITLE = 'Registro' ?>
 <?php include_once __DIR__ . '/partials/head.php' ?>
+<?php
+    $userBusiness = new UserBusiness();
+    if(isset($_POST['submit'])){
+        $userBusiness->create($_POST);
+    }
+    header("location: register.php");
+?>
+
 <body>
     <?php include_once __DIR__.'/./partials/nav.php' ?>
     <main>
@@ -20,8 +29,9 @@
                 Password
                 <input type="text" id='password' name='password' required>
             </label>
+            <input type="submit" name='submit' id='submit'>
         </form>
-        <p>¿Ya tienes cuenta? Logueate <a href="register.php">aquí</a></p>
+        <p>¿Ya tienes cuenta? Logueate <a href="login.php">aquí</a></p>
     </main>
     <?php include_once __DIR__.'/./partials/footer.php' ?>
 </body>
