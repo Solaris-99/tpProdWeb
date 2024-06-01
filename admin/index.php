@@ -12,51 +12,96 @@
                     <h1 class="h3 mb-4">Administrador de datos</h1>
                 </div>
                 <section class='container'>
-                <div class="col-xl-12 col-md-8 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">MOVIES</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"> <a href="./movie.php">Peliculas/Movies</a></div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-table fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-12 col-md-8 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CATEGORIES</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"> <a href="./category.php">Categorias/Categories</a></div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-table fa-2x text-gray-300"></i>
+                    <div class="col-xl-12 col-md-8 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">MOVIES</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> <a href="./movie.php">Peliculas/Movies</a></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-table fa-2x text-gray-300"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-12 col-md-8 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CATEGORIES/MOVIES</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./category_movie.php">Peliculas - categorias (Relación)</a></div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-table fa-2x text-gray-300"></i>
+                    <div class="col-xl-12 col-md-8 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CATEGORIES</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> <a href="./category.php">Categorias/Categories</a></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-table fa-2x text-gray-300"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-xl-12 col-md-8 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CATEGORIES/MOVIES</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./category_movie.php">Peliculas - categorias (Relación)</a></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-table fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-md-8 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">USERS</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./user.php">Users</a></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-table fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-md-8 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">USER/MOVIES</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./movie_user.php">Usuarios - películas (Relación)</a></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-table fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-md-8 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">ROLES</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./role.php">Roles</a></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-table fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </div>
             <?php include_once __DIR__ . '/./partials/footer.php' ?>

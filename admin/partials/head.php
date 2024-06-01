@@ -5,6 +5,9 @@
         require_once __DIR__ . '/../../app/business/CategoryBusiness.php';
         require_once __DIR__ . '/../../app/business/CategoryMovieBusiness.php';
         require_once __DIR__ . '/../../app/business/MovieBusiness.php';
+        require_once __DIR__ . '/../../app/business/UserBusiness.php';
+        require_once __DIR__ . '/../../app/business/MovieUserBusiness.php';
+        require_once __DIR__ . '/../../app/business/RoleBusiness.php'
     ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

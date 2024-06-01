@@ -30,4 +30,8 @@ class RoleBusiness{
         $this->dao->delete($id);
     }
 
+    public function getColumns(){
+        return $this->dao->getColumns();
+    }
+
 }
