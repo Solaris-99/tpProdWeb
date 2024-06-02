@@ -11,7 +11,7 @@ class Role{
         return $this->name;
     }
     public function getPermissionLevel(){
-        return $this->permission_level;
+        return (int) $this->permission_level;
     }
     
 }

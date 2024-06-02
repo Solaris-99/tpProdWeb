@@ -14,5 +14,13 @@ class UserDaoMySql extends Dao {
 
     }
 
+    public function findByEmail($email){
+        $stmt = $this->pdo->prepare("SELECT * FROM $this->table WHERE email = ?");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, $this->entityName); 
+        $stmt->execute([$email]);
+        $data = $stmt->fetch();
+        return $data;
+    }
+
     
 }

@@ -1,3 +1,6 @@
+<?php 
+    $auth = new AuthBusiness();
+?>
 
 
 <nav class="navbar navbar-expand-lg py-3">
@@ -19,24 +22,29 @@
                     </ul> 
                 </div>
                 <!-- Menu para usuarios registrados (TODO) -->
-                <!-- <div lc-helper="shortcode" class="live-shortcode ms-auto">
+                
+                <?php if(isset($_SESSION['id_user'])): ?>
+                <div lc-helper="shortcode" class="live-shortcode ms-auto" data-bs-theme='dark'>
                     <ul id="menu-secondary" class="navbar-nav">
-                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown nav-item nav-item-33131"><a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">Categories</a>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown nav-item nav-item-33131"><a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
                             <ul class="dropdown-menu  depth_0">
-                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33132"><a href="https://library.livecanvas.com/sections/category/cta/" class="dropdown-item ">CTA</a></li>
-                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33137"><a href="https://library.livecanvas.com/sections/category/contact/" class="dropdown-item ">Contact</a></li>
-                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33136"><a href="https://library.livecanvas.com/sections/category/faq/" class="dropdown-item ">FAQ</a></li>
-                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33138"><a href="https://library.livecanvas.com/sections/category/flex-layout/" class="dropdown-item ">Flex Layout</a></li>
-                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33139"><a href="https://library.livecanvas.com/sections/category/footers/" class="dropdown-item ">Footers</a></li>
-                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33140"><a href="https://library.livecanvas.com/sections/category/headers/" class="dropdown-item ">Headers</a></li>
-                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33134"><a href="https://library.livecanvas.com/sections/category/pricing/" class="dropdown-item ">Pricing Tables</a></li>
-                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33133"><a href="https://library.livecanvas.com/sections/category/team/" class="dropdown-item ">Team</a></li>
-                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33135"><a href="https://library.livecanvas.com/sections/category/testimonials/" class="dropdown-item ">Testimonials</a></li>
+                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33132"><a href="./user_movies.php" class="dropdown-item ">Mis películas</a></li>
+                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33137"><a href="./about.php#contact" class="dropdown-item ">Contacto</a></li>
+                                <?php if($auth->authPermission(Permissions::ADMIN)): ?>
+                                    <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33137"><a href="../admin/index.php" class="dropdown-item ">Panel de Administrador</a></li>
+                                <?php endif ?>
+
+                                <li class="menu-item menu-item-type-taxonomy menu-item-object-category nav-item nav-item-33135"><a href="./controllers/logout.php" class="dropdown-item ">Salir</a></li>
                             </ul>
                         </li>
                     </ul> 
-                </div> -->
-
+                </div>
+                <?php else: ?>
+                    <div lc-helper="shortcode" class="live-shortcode ms-auto">
+                        <a href="login.php">Ingresar</a>
+                        <a href="register.php">Registrarse</a>
+                    </div>
+                <?php endif?>
             </div>
         </div>
     </nav>

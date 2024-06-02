@@ -7,7 +7,7 @@ class user extends BaseModel{
     private string $username;
     private string $email;
     private string $password;// eliminar? - y llamar cuando sea necesario
-    private string $role_id;
+    private string $id_role;
 
     public function getUsername(){
         return $this->username;
@@ -18,8 +18,8 @@ class user extends BaseModel{
     public function getPassword(){
         return $this->password;
     }
-    public function getRoleId(){
-        return $this->role_id;
+    public function getIdRole(){
+        return $this->id_role;
     }
 
 }

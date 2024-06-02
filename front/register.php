@@ -4,32 +4,32 @@
 <?php include_once __DIR__ . '/partials/head.php' ?>
 <?php
     $userBusiness = new UserBusiness();
+    $authBusiness = new AuthBusiness();
     if(isset($_POST['submit'])){
         $userBusiness->create($_POST);
     }
-    header("location: register.php");
 ?>
 
 <body>
     <?php include_once __DIR__.'/./partials/nav.php' ?>
-    <main>
+    <main class='container vh-50'>
         <h2>Registro</h2>
         <p>¡Bienvenido a Movie Cube! El lugar correcto para ver tus películas</p>
         <p>Para comenzar, completa el formulario de registro:</p>
         <form action="" method="POST">
-            <label for="email">
+            <label for="email" class='d-block'>
                 E-mail
-                <input type="text" id='email' name='email' required>
+                <input type="email" id='email' name='email' required class='d-block mb-2'>
             </label>
-            <label for="username">
+            <label for="username" class='d-block'>
                 Nombre de usuario
-                <input type="text" id='username' name='username' required>
+                <input type="text" id='username' name='username' required class='d-block mb-2'>
             </label>
-            <label for="password">
+            <label for="password" class='d-block'>
                 Password
-                <input type="text" id='password' name='password' required>
+                <input type="password" id='password' name='password' required class='d-block mb-2'>
             </label>
-            <input type="submit" name='submit' id='submit'>
+            <input type="submit" name='submit' id='submit' class='d-block mb-2' value="Registrarme">
         </form>
         <p>¿Ya tienes cuenta? Logueate <a href="login.php">aquí</a></p>
     </main>

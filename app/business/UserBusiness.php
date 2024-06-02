@@ -1,13 +1,16 @@
 <?php
 
 require_once __DIR__.'/../dataAccess/UserDaoMySql.php';
+require_once __DIR__.'/../dataAccess/RoleDaoMySql.php';
 
 class UserBusiness{
     private UserDaoMySql $dao;
+    private RoleDaoMySql $roleDao;
     
     public function __construct()
     {
         $this->dao = new UserDaoMySql();
+        $this->roleDao = new RoleDaoMySql();
     }
 
     public function find(int $id, $as_array = false){
@@ -19,7 +22,15 @@ class UserBusiness{
     }
 
     public function create(array $data){
+        unset($data['submit']);
+        $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
+        $data['id_role'] = $this->roleDao->getEndUserRoleId();
         $this->dao->create($data);
+        $user = $this->dao->findByEmail($data['email']);
+        $_SESSION['id_user'] = $user->getId();
+        $_SESSION['id_role'] = $user->getIdRole();
+
+        header('location: index.php');
     }
 
     public function update(array $data){

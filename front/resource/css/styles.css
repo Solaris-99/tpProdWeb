@@ -37,6 +37,8 @@ nav, footer{
 
 nav a{
     color:white !important; 
+    text-decoration: none;
+    font-weight: 600;
 }
 
 nav{
@@ -53,4 +55,9 @@ nav{
 .pagination-nav{
     background-color: #121212 !important;
     border: none;
+}
+
+
+.vh-50{
+    height: 50vh;
 }
