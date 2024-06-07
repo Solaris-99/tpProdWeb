@@ -6,6 +6,7 @@
  - implementar sesiones ✔
  - auth: agregar autenticación y lógica de negocios ✔
  - login/register: Verificar que todos los campos estén completos
+ - logout desde admin, navbar overhaul.
  
 ## adminpanel
  - redirigir si el usuario no esta logeado/no tiene permiso ✔
