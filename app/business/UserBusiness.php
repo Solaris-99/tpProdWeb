@@ -23,7 +23,7 @@ class UserBusiness{
 
     public function create(array $data){
         unset($data['submit']);
-        $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         $data['id_role'] = $this->roleDao->getEndUserRoleId();
         $this->dao->create($data);
         $user = $this->dao->findByEmail($data['email']);
@@ -34,7 +34,7 @@ class UserBusiness{
     }
 
     public function update(array $data){
-        $this->dao->create($data);
+        $this->dao->update($data);
     }
 
     public function delete(int $id){

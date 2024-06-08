@@ -5,8 +5,9 @@
  - vistas: user, role, movie_user en back. movies que el usuario tenga en front. Login en ambas. ✔
  - implementar sesiones ✔
  - auth: agregar autenticación y lógica de negocios ✔
- - login/register: Verificar que todos los campos estén completos
- - logout desde admin, navbar overhaul.
+ - login/register: Verificar que todos los campos estén completos ✔
+ - logout desde admin, navbar overhaul. ✔
+ - vista: user_movies.php=> añadir paginado
  
 ## adminpanel
  - redirigir si el usuario no esta logeado/no tiene permiso ✔

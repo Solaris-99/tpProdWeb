@@ -6,6 +6,7 @@ require_once __DIR__ . '/../../app/entity/Movie.php';
 require_once __DIR__ . '/../../app/business/MovieBusiness.php';
 require_once __DIR__ . '/../../app/business/UserBusiness.php';
 require_once __DIR__ . '/../../app/business/CategoryBusiness.php';
+require_once __DIR__ . '/../../app/business/MovieUserBusiness.php';
 require_once __DIR__ . '/../../app/config/exception_handler.php';
 require_once __DIR__ . '/../../app/business/AuthBusiness.php';
 require_once __DIR__ . '/../../app/helpers/enums/permissions.php';

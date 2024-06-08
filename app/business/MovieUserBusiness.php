@@ -19,11 +19,13 @@ class MovieUserBusiness{
     }
 
     public function create(array $data){
+        unset($data['id']);
+        unset($data['SAVE']);
         $this->dao->create($data);
     }
 
     public function update(array $data){
-        $this->dao->create($data);
+        $this->dao->update($data);
     }
 
     public function delete(int $id){
@@ -32,5 +34,9 @@ class MovieUserBusiness{
 
     public function getColumns(){
         return $this->dao->getColumns();
+    }
+
+    public function getMoviesOfUser(int $id_user){
+        return $this->dao->getMoviesOfUser($id_user);
     }
 }

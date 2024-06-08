@@ -56,8 +56,7 @@ if (isset($_GET['del'])){
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2">Administración de datos</h1>
-                    <p>No te olvides de agregar las categorias en la tabla de <a href="category_movie.php">categories/movies</a></p>
-
+                    <p>Administración de usuarios</p>
                     <!-- Insert Form -->
 
                     <div class="col-xl-10 col-lg-12 col-md-9 mx-auto">

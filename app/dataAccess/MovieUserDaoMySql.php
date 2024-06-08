@@ -14,6 +14,11 @@ class MovieUserDaoMySql extends Dao{
 
     }
 
-
+    public function getMoviesOfUser(int $id_user){
+        $stmt = $this->pdo->prepare("SELECT id_movie from $this->table WHERE id_user = ?");
+        $stmt->setFetchMode(PDO::FETCH_COLUMN,0);
+        $stmt->execute([$id_user]);
+        return $stmt->fetchAll();
+    }
 }
 

@@ -53,6 +53,7 @@ if (isset($_GET['del'])){
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Administración de datos</h1>
+                    <p>Administración de categorías</p>
                     <!-- Insert Form -->
 
                     <div class="col-xl-10 col-lg-12 col-md-9 mx-auto">

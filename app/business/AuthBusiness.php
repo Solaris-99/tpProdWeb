@@ -13,14 +13,16 @@ class AuthBusiness{
         $this->userDao = new UserDaoMySql();
         $this->roleDao = new RoleDaoMySql();
     }
+
     /**
      * Login function
      */
+
     public function authenticate(array $data){
         $email = $data['email'];
         $password = $data['password'];
-
         $user = $this->userDao->findByEmail($email);
+
         if(!empty($user) and password_verify($password,$user->getPassword())){
             $_SESSION['id_user'] = $user->getId();
             $_SESSION['id_role'] = $user->getIdRole();
@@ -52,9 +54,18 @@ class AuthBusiness{
         return true;
     }
 
+    public function authPrivateEndUserSite(){
+        $logged = isset($_SESSION['id_user']);
+        if(!$logged){
+            header("location: login.php");
+            die;
+        }
+        return true;
+    }
+
     public function login(array $data){
         $head = 'login.php';
-        if($this->authenticate($data)){
+        if($this->authenticate($data) && isset($data['password']) && isset($data['email'])){
             $head = 'index.php';
         }
         var_dump($head);

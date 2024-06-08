@@ -118,4 +118,9 @@ class MovieBusiness
     public function getNumOfPages(){
         return ceil($this->dao->getMovieCount()[0]/10);
     }
+
+    public function getMoviesByIds(array $ids){
+        return $this->dao->getMoviesByIds($ids);
+    }
+
 }
