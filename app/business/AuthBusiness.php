@@ -68,7 +68,7 @@ class AuthBusiness{
         if($this->authenticate($data) && isset($data['password']) && isset($data['email'])){
             $head = 'index.php';
         }
-        var_dump($head);
+        
         header("location: $head");
     }
 
