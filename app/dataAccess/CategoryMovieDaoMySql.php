@@ -1,19 +1,20 @@
 <?php
-require_once __DIR__ . '/Dao.php';
-require_once __DIR__ . '/../config/db.php';
-require_once __DIR__ . '/../entity/CategoryMovie.php';
+namespace MC\DataAccess;
 
-//best name ever
+use MC\DataAccess\Dao;
+use MC\Entity\CategoryMovie;
+use PDO;
+
+
 
 class CategoryMovieDaoMySql extends Dao
 
 {
     public function __construct()
     {
-        global $con;
-        $this->pdo = $con;
+        parent::__construct();
         $this->table = 'category_movie';
-        $this->entityName = 'CategoryMovie';
+        $this->entityName =   CategoryMovie::class;
     }
 
     public function getMovieAndCategoryName(int $id = null, $includeOtherIds = false){

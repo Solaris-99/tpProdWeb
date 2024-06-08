@@ -1,4 +1,6 @@
 <?php
+namespace MC\Helpers\Errors;
+use Exception;
 
 class RedirectException extends Exception{
     private string $header;

@@ -1,5 +1,7 @@
 <?php
 
+namespace MC\Helpers\Enums;
+
 enum Permissions: int
 {
     case END_USER = 0;

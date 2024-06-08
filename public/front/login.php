@@ -3,7 +3,7 @@
 <?php $PAGE_TITLE = 'Ingresar' ?>
 <?php include_once __DIR__ . '/partials/head.php' ?>
 <?php
-
+    use MC\Business\AuthBusiness;
     $authBusiness = new AuthBusiness();
     if(isset($_POST['submit'])){
         $authBusiness->login($_POST);

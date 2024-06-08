@@ -1,5 +1,6 @@
 <?php
-require_once 'BaseModel.php';
+namespace MC\Entity;
+use MC\Entity\BaseModel;
 
 
 

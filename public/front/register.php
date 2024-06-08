@@ -3,6 +3,8 @@
 <?php $PAGE_TITLE = 'Registro' ?>
 <?php include_once __DIR__ . '/partials/head.php' ?>
 <?php
+    use MC\Business\UserBusiness;
+    use MC\Business\AuthBusiness;
     $userBusiness = new UserBusiness();
     $authBusiness = new AuthBusiness();
     if(isset($_POST['submit'])){

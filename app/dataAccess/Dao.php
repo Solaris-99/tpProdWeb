@@ -1,4 +1,7 @@
 <?php
+namespace MC\DataAccess;
+use PDO;
+use MC\Config\Connection;
 
 abstract class Dao
 {
@@ -6,8 +9,14 @@ abstract class Dao
     protected $pdo;
     protected string $table;
     protected string $entityName;
+
+    public function __construct()
+    {
+        $this->pdo = Connection::getCon();
+    }
     
     public function all(array $filter, bool $as_array = false)    {
+
         $stmt = $this->pdo->prepare("SELECT * FROM $this->table");
         if ($as_array) {
             $stmt->setFetchMode(PDO::FETCH_ASSOC);

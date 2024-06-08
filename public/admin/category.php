@@ -3,7 +3,7 @@
 
 <?php include_once __DIR__ . '/./partials/head.php' ?>
 <?php
-
+use MC\Business\CategoryBusiness;
 $categoryBusiness = new categoryBusiness();
 $columns = $categoryBusiness->getColumns();
 $data = $categoryBusiness->all([], true);

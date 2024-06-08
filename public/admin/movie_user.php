@@ -4,7 +4,7 @@
 <?php include_once __DIR__ . '/./partials/head.php' ?>
 
 <?php
-
+use MC\Business\MovieUserBusiness;
 $movieUserBusiness = new MovieUserBusiness();
 $columns = $movieUserBusiness->getColumns();
 $data = $movieUserBusiness->all([], true);

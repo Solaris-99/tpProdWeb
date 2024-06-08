@@ -1,9 +1,8 @@
 <?php
-require_once 'BaseModel.php';
+namespace MC\Entity;
+use MC\Entity\BaseModel;
 
-
-
-class user extends BaseModel{
+class User extends BaseModel{
     private string $username;
     private string $email;
     private string $password;// eliminar? - y llamar cuando sea necesario

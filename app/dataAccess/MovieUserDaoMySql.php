@@ -1,16 +1,16 @@
 <?php
-
-require_once __DIR__ . '/Dao.php';
-require_once __DIR__ . '/../entity/MovieUser.php';
+namespace MC\DataAccess;
+use MC\DataAccess\Dao;
+use MC\Entity\MovieUser;
+use PDO;
 
 class MovieUserDaoMySql extends Dao{
 
     public function __construct()
     {   
-        global $con;
-        $this->pdo = $con;
+        parent::__construct();
         $this->table = 'movie_user';
-        $this->entityName = 'MovieUser';
+        $this->entityName = MovieUser::class;
 
     }
 

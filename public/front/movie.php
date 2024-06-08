@@ -2,6 +2,9 @@
 <html lang="es">
     <?php require_once __DIR__ . '/partials/head.php' ?>
     <?php
+        use MC\Helpers\Errors\RedirectException;
+        use MC\Business\MovieBusiness;
+        
         if(!isset($_GET['id'])){
             throw new RedirectException("./404.php","",404);
         }

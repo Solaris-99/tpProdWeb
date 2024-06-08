@@ -1,12 +1,12 @@
 <?php
+namespace MC\Entity;
+
 abstract class BaseModel
 {
 
-    protected $id;
-    // protected $createdAt;
-    // protected $updatedAt;
+    protected string $id;
 
-
+  
     public function getId() {
       return $this->id;
     }

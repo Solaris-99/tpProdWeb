@@ -1,6 +1,8 @@
 <?php
-require_once __DIR__.'/../dataAccess/CategoryDaoMySql.php';
-require_once __DIR__.'/../helpers/errors/RedirectException.php';
+namespace MC\Business;
+use MC\DataAccess\CategoryDaoMySql;
+use MC\Helpers\Errors\RedirectException;
+use PDOException;
 
 class CategoryBusiness 
 {
@@ -23,9 +25,9 @@ class CategoryBusiness
         return $category;
     }
 
-    public function all($array, $as_array = false){
-        $categorys = $this->dao->all($array, $as_array);
-        return $categorys;
+    public function all(array $filter, $as_array = false){
+        $categories = $this->dao->all($filter, $as_array);
+        return $categories;
     }
 
     public function getColumns(){

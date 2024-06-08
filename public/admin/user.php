@@ -4,7 +4,7 @@
 <?php include_once __DIR__ . '/./partials/head.php' ?>
 
 <?php
-
+use MC\Business\UserBusiness;
 $userBusiness = new UserBusiness();
 $columns = $userBusiness->getColumns();
 $data = $userBusiness->all([], true);

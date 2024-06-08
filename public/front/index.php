@@ -3,7 +3,8 @@
 <?php require_once __DIR__ . '/partials/head.php' ?>
 
 <?php
-
+    use MC\Business\MovieBusiness;
+    use MC\Business\CategoryBusiness;
     $movieBusiness = new MovieBusiness();
     $categoryBusiness = new CategoryBusiness();
     $categorySelectData = $categoryBusiness->all([],true);

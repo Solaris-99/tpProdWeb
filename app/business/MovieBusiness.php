@@ -1,8 +1,9 @@
 <?php
-
-require_once __DIR__.'/../dataAccess/MovieDaoMySql.php';
-require_once __DIR__ . '/../config/exception_handler.php';
-require_once __DIR__.'/../helpers/errors/RedirectException.php';
+namespace MC\Business;
+use MC\DataAccess\MovieDaoMySql;
+use MC\Helpers\Errors\RedirectException;
+use PDOException;
+//require_once __DIR__ . '/../config/exception_handler.php';
 
 
 class MovieBusiness 

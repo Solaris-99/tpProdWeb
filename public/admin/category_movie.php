@@ -5,7 +5,9 @@
 <?php include_once __DIR__ . '/./partials/head.php' ?>
 
 <?php
-
+use MC\Business\CategoryBusiness;
+use MC\Business\MovieBusiness;
+use MC\Business\CategoryMovieBusiness;
 
 $categoryMovieBusiness = new CategoryMovieBusiness();
 $movieBusiness = new MovieBusiness();

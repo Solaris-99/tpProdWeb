@@ -1,18 +1,9 @@
 <head>
     <?php
-        require_once __DIR__ . "/../../../app/helpers/enums/permissions.php";
-
-        session_start();
-
+        require_once __DIR__ . "/../../../vendor/autoload.php";
         require_once __DIR__ . "/../../../app/config/exception_handler.php";
-        require_once __DIR__ . "/../../../app/helpers/errors/RedirectException.php";
-        require_once __DIR__ . '/../../../app/business/CategoryBusiness.php';
-        require_once __DIR__ . '/../../../app/business/CategoryMovieBusiness.php';
-        require_once __DIR__ . '/../../../app/business/MovieBusiness.php';
-        require_once __DIR__ . '/../../../app/business/UserBusiness.php';
-        require_once __DIR__ . '/../../../app/business/MovieUserBusiness.php';
-        require_once __DIR__ . '/../../../app/business/RoleBusiness.php';
-        require_once __DIR__ . '/../../../app/business/AuthBusiness.php';
+        use MC\Business\AuthBusiness;
+        session_start();
         $auth = new AuthBusiness();
         $auth->authAdminSite();
 

@@ -2,6 +2,11 @@
 <html lang="es">
 <?php include_once __DIR__ . '/partials/head.php' ?>
 <?php
+
+use MC\Business\AuthBusiness;
+use MC\Business\MovieUserBusiness;
+use MC\Business\MovieBusiness;
+
 $auth = new AuthBusiness();
 $auth->authPrivateEndUserSite();
 $movieUserBusiness = new MovieUserBusiness();

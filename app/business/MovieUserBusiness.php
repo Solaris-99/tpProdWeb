@@ -1,6 +1,6 @@
 <?php
-
-require_once __DIR__ . '/../dataAccess/MovieUserDaoMySql.php';
+namespace MC\Business;
+use MC\DataAccess\MovieUserDaoMySql;
 
 class MovieUserBusiness{
     private MovieUserDaoMySql $dao;

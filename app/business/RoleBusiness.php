@@ -1,6 +1,6 @@
 <?php
-
-require_once __DIR__.'/../dataAccess/RoleDaoMySql.php';
+namespace MC\Business;
+use MC\DataAccess\RoleDaoMySql;
 
 class RoleBusiness{
     private RoleDaoMySql $dao;

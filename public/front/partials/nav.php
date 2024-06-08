@@ -1,4 +1,6 @@
 <?php 
+    use MC\Business\AuthBusiness;
+    use MC\Helpers\Enums\Permissions;
     $auth = new AuthBusiness();
 ?>
 

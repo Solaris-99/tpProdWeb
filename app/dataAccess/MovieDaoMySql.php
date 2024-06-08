@@ -1,16 +1,16 @@
 <?php
-require_once __DIR__. '/Dao.php';
-require_once __DIR__. '/../config/db.php';
-require_once __DIR__. '/../entity/Movie.php';
+namespace MC\DataAccess;
+use MC\DataAccess\Dao;
+use MC\Entity\Movie;
+use PDO;
 
 class MovieDaoMySql extends Dao
 {   
     public function __construct()
     {   
-        global $con;
-        $this->pdo = $con;
+        parent::__construct();
         $this->table = 'movie';
-        $this->entityName = 'Movie';
+        $this->entityName = Movie::class;
     }
 
     public function all(array $filter, bool $as_array = false, int $page = null){
@@ -62,7 +62,7 @@ class MovieDaoMySql extends Dao
             $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         else{
-            $movies = $stmt->fetchAll(PDO::FETCH_CLASS,'Movie');
+            $movies = $stmt->fetchAll(PDO::FETCH_CLASS, $this->entityName);
         }
         return $movies;
     }
@@ -97,7 +97,7 @@ class MovieDaoMySql extends Dao
         $sql .= " GROUP BY id LIMIT 4";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($categories);
-        $movies = $stmt->fetchAll(PDO::FETCH_CLASS,'Movie');
+        $movies = $stmt->fetchAll(PDO::FETCH_CLASS, $this->entityName);
         return $movies;
     }
 
@@ -123,7 +123,7 @@ class MovieDaoMySql extends Dao
         $stmt->execute($ids);
         
         // Fetch the results as Movie objects
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Movie');
+        return $stmt->fetchAll(PDO::FETCH_CLASS, $this->entityName);
     }
 
 }

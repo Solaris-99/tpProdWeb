@@ -1,8 +1,10 @@
 <?php
 
-require_once __DIR__.'/../dataAccess/UserDaoMySql.php';
-require_once __DIR__.'/../dataAccess/RoleDaoMySql.php';
-require_once __DIR__.'/../helpers/enums/permissions.php';
+namespace MC\Business;
+use MC\DataAccess\UserDaoMySql;
+use MC\DataAccess\RoleDaoMySql;
+use MC\Helpers\Enums\Permissions;
+
 
 class AuthBusiness{
     private UserDaoMySql $userDao;
@@ -68,7 +70,7 @@ class AuthBusiness{
         if($this->authenticate($data) && isset($data['password']) && isset($data['email'])){
             $head = 'index.php';
         }
-        
+
         header("location: $head");
     }
 

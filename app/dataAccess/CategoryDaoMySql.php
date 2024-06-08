@@ -1,7 +1,8 @@
 <?php
-require_once __DIR__ . '/Dao.php';
-require_once __DIR__ . '/../config/db.php';
-require_once __DIR__ . '/../entity/Category.php';
+namespace MC\DataAccess;
+
+use MC\DataAccess\Dao;
+use MC\Entity\Category;
 
 
 
@@ -10,10 +11,9 @@ class CategoryDaoMySql extends Dao
 {
     public function __construct()
     {
-        global $con;
-        $this->pdo = $con;
+        parent::__construct();
         $this->table = 'category';
-        $this->entityName = 'Category';
+        $this->entityName = Category::class;
     }
 
 }

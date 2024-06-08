@@ -1,5 +1,6 @@
 <?php
-require_once 'BaseModel.php';
+namespace MC\Entity;
+use MC\Entity\BaseModel;
 
 class Movie extends BaseModel
 {
@@ -11,9 +12,6 @@ class Movie extends BaseModel
   private ?string $description;
   private string $price;
   // private $category;
-    
-
-    
 
     public function getTitle() {
       return $this->title;
