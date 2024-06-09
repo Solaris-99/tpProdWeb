@@ -7,4 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'MC\\' => array($baseDir . '/app'),
+    'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src'),
+    'Intervention\\Gif\\' => array($vendorDir . '/intervention/gif/src'),
 );

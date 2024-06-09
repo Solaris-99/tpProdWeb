@@ -24,7 +24,11 @@
             </div>
             <div class="lc-block">
                 <!-- Para registrarse -->
-                <a class="btn btn-dark" href="#" role="button">Empieza tu colección</a>
+                 <?php if(!isset($_SESSION['id_user'])):?>
+                    <a class="btn btn-dark" href="register.php" role="button">Empieza tu colección</a>
+                <?php else:?>
+                    <a class="btn btn-dark" href='user_movies.php' role='button' > Ver mis peliculas</a>
+                <?php endif?>
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@ class MovieDaoMySql extends Dao
     }
 
     public function all(array $filter, bool $as_array = false, int $page = null){
-        $moviesPerPage = 10; // podría pasarse como parametro.
+        $moviesPerPage = 10; // podría pasarse como parametro (atributo).
         $sql = 'SELECT movie.id, movie.title, movie.release, movie.poster, movie.duration, movie.rating, movie.description, movie.price FROM movie';
         $bindings = [];
 

@@ -3,5 +3,8 @@
         "psr-4":{
             "MC\\": "app/"
         }
+    },
+    "require": {
+        "intervention/image": "^3.6"
     }
 }

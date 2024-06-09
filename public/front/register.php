@@ -7,6 +7,10 @@
     use MC\Business\AuthBusiness;
     $userBusiness = new UserBusiness();
     $authBusiness = new AuthBusiness();
+    if(isset($_SESSION['id_user'])){
+        header("location: index.php");
+    }
+
     if(isset($_POST['submit'])){
         $userBusiness->create($_POST);
     }

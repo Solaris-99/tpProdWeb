@@ -5,6 +5,9 @@
 <?php
     use MC\Business\AuthBusiness;
     $authBusiness = new AuthBusiness();
+    if(isset($_SESSION['id_user'])){
+        header("location: index.php");
+    }
     if(isset($_POST['submit'])){
         $authBusiness->login($_POST);
     }

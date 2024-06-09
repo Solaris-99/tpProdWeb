@@ -11,12 +11,25 @@ class ComposerStaticInit6c4f4b1367e385427c15d4a3ae11c697
         array (
             'MC\\' => 3,
         ),
+        'I' => 
+        array (
+            'Intervention\\Image\\' => 19,
+            'Intervention\\Gif\\' => 17,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'MC\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+        ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src',
+        ),
+        'Intervention\\Gif\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/gif/src',
         ),
     );
 

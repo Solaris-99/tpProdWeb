@@ -7,7 +7,9 @@
  - auth: agregar autenticación y lógica de negocios ✔
  - login/register: Verificar que todos los campos estén completos ✔
  - logout desde admin, navbar overhaul. ✔
- - vista: user_movies.php=> añadir paginado
+ - vista: user_movies.php => añadir paginado
+ - añadir image upload en movie en admin
+ - añadir image table view en admin
  
 ## adminpanel
  - redirigir si el usuario no esta logeado/no tiene permiso ✔
