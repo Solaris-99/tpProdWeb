@@ -14,7 +14,7 @@ $url_table = "movie.php";
 if (isset($_POST['SAVE'])) {
 
     if(empty($_POST['id'])){
-        $movieBusiness->create($_POST);
+        $movieBusiness->create($_POST, $_FILES);
     }
     else{
         $movieBusiness->update($_POST);
@@ -57,6 +57,8 @@ if (isset($_GET['del'])){
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2">Administración de datos</h1>
                     <p>No te olvides de agregar las categorias en la tabla de <a href="category_movie.php">categories/movies</a></p>
+                    <p>La imagen que agregues aquí será el banner de la película.</p>
+                    <p>Para agregar más de una imágen, ir a la tabla de imágenes.</p>
 
                     <!-- Insert Form -->
 
@@ -64,7 +66,7 @@ if (isset($_GET['del'])){
                         <div class="card o-hidden border-0 shadow-lg my-5">
                             <div class="card-body p-4">
                                 <h4>Añadir una nueva entrada</h4>
-                                <form class="user" action='' method='POST'>
+                                <form class="user" action='' method='POST' enctype="multipart/form-data">
                                     <div class='d-flex '>
                                         <?php foreach ($columns as $col) : ?>
                                             <div class="form-group d-inline-block mr-2">
@@ -94,6 +96,10 @@ if (isset($_GET['del'])){
                                                 <input type="<?php echo $input?>" class="form-control" id="<?php echo $col ?>" name='<?php echo $col ?>' <?php if($required){echo 'required';}?> value="<?php echo isset($mov)? $mov[$col] :"" ?>" >
                                             </div>
                                         <?php endforeach ?>
+                                        <label for="image" style='width:130px;'>
+                                                    Subir imagen
+                                                <input type="file" accept="image/png, image/jpg, image/jpeg"  name='image' id='image' class='d-inline' >
+                                        </label>
                                     </div>
                                     <input type='submit' name='SAVE' id='SAVE' class="btn w-25 mx-auto btn-primary btn-user btn-block" value="Guardar">
                                 </form>

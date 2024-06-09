@@ -32,6 +32,9 @@
                         <h6 class="collapse-header text-dark">Películas:</h6>
                         <a class="collapse-item" href="movie.php">Películas</a>
                         <a class="collapse-item" href="category.php">Categorías</a>
+                        <a class="collapse-item" href="category_movie">Categorías/Películas</a>
+                        <a class="collapse-item" href="image.php">Imágenes</a>
+                        <h6 class="collapse-header text-dark">Users:</h6>
                         <a class="collapse-item" href="user.php">Usuarios</a>
                         <a class="collapse-item" href="movie_user.php">Usuarios - Películas</a>
                         <a class="collapse-item" href="role.php">Roles</a>

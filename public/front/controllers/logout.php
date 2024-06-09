@@ -1,6 +1,7 @@
 <?php
+require_once __DIR__.'/../../../vendor/autoload.php';
 session_start();
-require_once __DIR__ . '/../../app/business/AuthBusiness.php';
+use MC\Business\AuthBusiness;
 
 $auth = new AuthBusiness();
 $auth->logout();

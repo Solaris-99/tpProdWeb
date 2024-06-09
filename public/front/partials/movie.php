@@ -1,3 +1,9 @@
+<?php
+    use MC\Business\ImageBusiness;
+    $imageBusiness = new ImageBusiness();
+?>
+
+
 <!-- Page Content -->
 <div class="container">
 
@@ -10,7 +16,7 @@
     <div class="row mb-4">
   
       <div class="col-md-8">
-        <img class="img-fluid" src="<?php echo $movie->getPoster()?>" alt="<?php echo $movie->getTitle() ?>">
+        <img class="img-fluid" src="<?php echo $imageBusiness->getBanner($movie->getId());?>" alt="<?php echo $movie->getTitle() ?>">
       </div>
   
       <div class="col-md-4">
@@ -40,7 +46,7 @@
       <?php foreach($related as $r): ?>
         <div class="col-md-3 col-sm-6 mb-4">
           <a href="movie.php?id=<?php echo $r->getId()?>">
-            <img class="img-fluid" src="<?php echo $r->getPoster()?>" alt="<?php echo $r->getTitle()?>" height="300">
+            <img class="img-fluid" src="<?php echo $imageBusiness->getBanner($r->getId())?>" alt="<?php echo $r->getTitle()?>" height="300">
           </a>
         </div>
       <?php endforeach ?>

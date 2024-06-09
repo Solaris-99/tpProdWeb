@@ -3,16 +3,17 @@ namespace MC\Business;
 use MC\DataAccess\MovieDaoMySql;
 use MC\Helpers\Errors\RedirectException;
 use PDOException;
-//require_once __DIR__ . '/../config/exception_handler.php';
-
+use MC\Business\ImageBusiness;
 
 class MovieBusiness 
 {
     private MovieDaoMySql $dao;
+    private ImageBusiness $imageBusiness;
     
     public function __construct()
     {
         $this->dao = new MovieDaoMySql();
+        $this->imageBusiness = new ImageBusiness();
     }
 
     public function find($id, $as_array = false){        
@@ -67,6 +68,9 @@ class MovieBusiness
         return $catsStr;
     }
 
+    /**
+     * gets the columns of the table
+     */
     public function getColumns(){
         try{
             $columns = $this->dao->getColumns();
@@ -78,16 +82,19 @@ class MovieBusiness
         return $columns;
     }
 
-    public function create(array $data){
+    public function create(array $data, array $imgFileData){
         unset($data['id']);
         unset($data['SAVE']);
-        var_dump($data);
-        die;
         try{
             $this->dao->create($data);
+            $imgTableData = [
+                'id_movie'=> $this->dao->getLastInsertId(),
+                'is_banner' => 1
+            ];
+            $this->imageBusiness->create($imgTableData,$imgFileData);
         }
         catch(PDOException $e){
-            throw new RedirectException('./500.php',"Algo salió mal creando la película");
+            throw new RedirectException('./500.php',$e->getTraceAsString() . " ". $e->getMessage());
         }
 
     }

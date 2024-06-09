@@ -1,50 +1,36 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
 <?php include_once __DIR__ . '/./partials/head.php' ?>
 
 <?php
-use MC\Business\CategoryBusiness;
-use MC\Business\MovieBusiness;
-use MC\Business\CategoryMovieBusiness;
-
-$categoryMovieBusiness = new CategoryMovieBusiness();
-$movieBusiness = new MovieBusiness();
-$categoryBusiness = new CategoryBusiness();
-
-
-$movieSelectData = $movieBusiness->all([],true);
-$categorySelectData = $categoryBusiness->all([],true);
-$columns = ["ID","ID Película","ID Categoría","Película","Categoría"];
-$data = $categoryMovieBusiness->getMovieAndCategoryName(null, true);
-$tablename = "CategoryMovie";
-$url_table = "category_movie.php";
+use MC\Business\ImageBusiness;
+$imageBusiness = new ImageBusiness();
+$columns = $imageBusiness->getColumns();
+$data = $imageBusiness->all([], true);
+$tablename = "Image";
+$url_table = "image.php";
 
 if (isset($_POST['SAVE'])) {
 
     if(empty($_POST['id'])){
-        $categoryMovieBusiness->create($_POST);
+        $imageBusiness->create($_POST, $_FILES);
     }
     else{
-        $categoryMovieBusiness->update($_POST);
+        $imageBusiness->update($_POST);
     }
     header("location:$url_table");
 }
 
 if(isset($_GET['edit'])){
-    $mov = $categoryMovieBusiness->find($_GET['edit'], true);
+    $mov = $imageBusiness->find($_GET['edit'], true);
 }
 if (isset($_GET['del'])){
-    $categoryMovieBusiness->delete($_GET['del']);
+    $imageBusiness->delete($_GET['del']);
 }
 
 
 ?>
-
-
-
-
 
 <body id="page-top">
 
@@ -70,35 +56,44 @@ if (isset($_GET['del'])){
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2">Administración de datos</h1>
-                    <p>Tabla de relación N a N de categorías/películas</p>
+                    <p>Administración de imágenes</p>
                     <!-- Insert Form -->
 
                     <div class="col-xl-10 col-lg-12 col-md-9 mx-auto">
                         <div class="card o-hidden border-0 shadow-lg my-5">
                             <div class="card-body p-4">
                                 <h4>Añadir una nueva entrada</h4>
-                                <form class="user" action='' method='POST'>
+                                <form class="user" action='' method='POST' enctype="multipart/form-data">
                                     <div class='d-flex '>
+                                        <?php foreach ($columns as $col) : ?>
                                             <div class="form-group d-inline-block mr-2">
-                                                <label>ID</label>
-                                                <input type="number" class="form-control" value="<?php if(isset($mov)){echo $mov['id']; }?>" min='1'>
+                                                <label for="<?php echo $col ?>"><?php echo $col ?></label>
+                                                <?php 
+                                                    $input;
+                                                    $required;
+                                                    switch($col){
+                                                        case 'id';
+                                                        case 'movie_id';
+                                                            $input = 'number';
+                                                            $required = false;
+                                                            break;
+                                                        case 'path';
+                                                            $input = 'text';
+                                                            $required = false;
+                                                            break;
+                                                        default:
+                                                            $input = 'text';
+                                                            $required = true;
+                                                            break;
+                                                    }
+                                                ?>
+                                                <input type="<?php echo $input?>" class="form-control" id="<?php echo $col ?>" name='<?php echo $col ?>' <?php if($required){echo 'required';}?> value="<?php echo isset($mov)? $mov[$col] :"" ?>" >
                                             </div>
-                                            <div class="form-group d-inline-block mr-2 my-auto ">
-                                                <label for='id_movie' class='d-block'>ID Película</label>
-                                                <select class="form-select d-inline-block mr-2" name='id_movie' id='id_movie'>
-                                                    <?php foreach($movieSelectData as $val): ?>
-                                                        <option value="<?php echo $val['id'] ?>" <?php if(isset($mov)){if($mov['id_movie'] == $val['id']){echo "selected";} } ?> > <?php echo "ID: ".$val['id']." - " . $val['title'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group d-inline-block mr-2 my-auto">
-                                                <label for='id_category' class='d-block'>ID Categoría</label>
-                                                <select class=" form-select d-inline-block mr-2" name='id_category' id='id_category'>
-                                                    <?php foreach($categorySelectData as $val): ?>
-                                                        <option value="<?php echo $val['id'] ?>" <?php if(isset($mov)){if($mov['id_category'] == $val['id']){echo "selected";} } ?>  > <?php echo "ID: ".$val['id']." - " . $val['name'] ?></option>
-                                                    <?php endforeach ?>
-                                                </select>
-                                            </div>
+                                        <?php endforeach ?>
+                                        <label for="image" style='width:130px;'>
+                                                    Subir imagen
+                                                <input type="file" accept="image/png, image/jpg, image/jpeg"  name='image' id='image' class='d-inline' >
+                                        </label>
                                     </div>
                                     <input type='submit' name='SAVE' id='SAVE' class="btn w-25 mx-auto btn-primary btn-user btn-block" value="Guardar">
                                 </form>

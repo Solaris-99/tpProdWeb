@@ -6,7 +6,7 @@ use MC\Config\Connection;
 abstract class Dao
 {
 
-    protected $pdo;
+    protected PDO $pdo;
     protected string $table;
     protected string $entityName;
 
@@ -91,5 +91,9 @@ abstract class Dao
         $sql = "DELETE FROM $this->table WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$id]);
+    }
+
+    public function getLastInsertId(){
+        return $this->pdo->lastInsertId();
     }
 }

@@ -15,7 +15,7 @@ class MovieDaoMySql extends Dao
 
     public function all(array $filter, bool $as_array = false, int $page = null){
         $moviesPerPage = 10; // podría pasarse como parametro (atributo).
-        $sql = 'SELECT movie.id, movie.title, movie.release, movie.poster, movie.duration, movie.rating, movie.description, movie.price FROM movie';
+        $sql = 'SELECT movie.id, movie.title, movie.release, movie.duration, movie.rating, movie.description, movie.price FROM movie';
         $bindings = [];
 
         if(!empty($filter)){
@@ -83,7 +83,7 @@ class MovieDaoMySql extends Dao
     }
 
     public function getRelated(array $categories, bool $exclude_id){
-        $sql = "SELECT movie.id, movie.title,  movie.poster FROM movie
+        $sql = "SELECT movie.id, movie.title FROM movie
         INNER JOIN category_movie ON category_movie.id_movie = movie.id
         INNER JOIN category ON  category_movie.id_category = category.id
         WHERE (";
