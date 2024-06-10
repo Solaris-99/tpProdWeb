@@ -36,7 +36,14 @@ class ImageBusiness {
         $this->dao->create($data);
     }
 
-    public function update(array $data){
+    public function update(array $data, ?array $img_data){
+        unset($data['SAVE']);
+        if($img_data != null){
+            $ext = explode('/',$img_data['image']['type'])[1];
+            $image_name = uniqid() .'.'. $ext;
+            $this->saveImage($img_data['image']['tmp_name'],$image_name);
+        }
+        $data['path'] = $image_name;
         $this->dao->update($data);
     }
 

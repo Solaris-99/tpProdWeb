@@ -25,6 +25,7 @@ class RoleBusiness{
     }
 
     public function update(array $data){
+        unset($data['SAVE']);
         $this->dao->update($data);
     }
 

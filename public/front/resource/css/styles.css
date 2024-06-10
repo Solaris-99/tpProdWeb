@@ -61,3 +61,7 @@ nav{
 .vh-50{
     height: 50vh;
 }
+
+main{
+    min-height: 45vh;
+}

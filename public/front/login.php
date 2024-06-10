@@ -19,6 +19,7 @@
     <main class='container vh-50'>
         <h2>Login</h2>
         <p>Bienvenido de vuelta a MovieCube.</p>
+        <?php include_once __DIR__ . '/./partials/error.php'?>
         <form action="" method="POST" >
             <label for="email" class='d-block'>
                 E-mail

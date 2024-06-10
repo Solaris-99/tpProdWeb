@@ -6,7 +6,7 @@
 <body>
     <?php include_once __DIR__ . '/./partials/nav.php' ?>
     <main class="container p-2">
-        
+            
             <h1>Sobre Nostros</h1>
             <div class='d-flex'>
 

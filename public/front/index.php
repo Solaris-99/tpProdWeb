@@ -49,6 +49,7 @@
             </label>
             <input type="submit" value="Filtrar" class='rounded'>
         </form>
+        <?php include_once __DIR__ . '/./partials/error.php'?>
         <?php if(empty($peliculas)):?>
             <div class='text-center m-4 p-4'>
                 <h2>No se encontraron películas</h2>

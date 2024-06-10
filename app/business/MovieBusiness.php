@@ -120,6 +120,7 @@ class MovieBusiness
     }
 
     public function getRelated(array $categories, $exclude_id){
+        if(empty($categories)){return "";}
         return $this->dao->getRelated($categories, $exclude_id);
     }
 

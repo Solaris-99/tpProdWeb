@@ -37,6 +37,7 @@
             </label>
             <input type="submit" name='submit' id='submit' class='d-block mb-2' value="Registrarme">
         </form>
+        <?php include_once __DIR__ . '/./partials/error.php'?>
         <p>¿Ya tienes cuenta? Logueate <a href="login.php">aquí</a></p>
     </main>
     <?php include_once __DIR__.'/./partials/footer.php' ?>

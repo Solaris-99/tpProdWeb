@@ -58,7 +58,7 @@ if (isset($_GET['del'])){
                     <h1 class="h3 mb-2">Administración de datos</h1>
                     <p>No te olvides de agregar las categorias en la tabla de <a href="category_movie.php">categories/movies</a></p>
                     <p>La imagen que agregues aquí será el banner de la película.</p>
-                    <p>Para agregar más de una imágen, ir a la tabla de imágenes.</p>
+                    <p>Para agregar más de una imágen, ir a la tabla de <a href="image.php">imágenes.</a></p>
 
                     <!-- Insert Form -->
 

@@ -10,10 +10,8 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 text-center">
-                    <span class="display-1 d-block">No Disponible</span>
-                    <?php include_once __DIR__ . '/./partials/error.php'?>
-                    <div class="mb-4 lead">El sitio no se encuentra disponible por el momento, vuelve a intentarlo más tarde
-                        Por favor, acepta nuestras disculpas.</div>
+                    <span class="display-1 d-block">500</span>
+                    <div class="mb-4 lead">No se pudo procesar la solicitud. Por favor, vuelve a intentarlo más tarde.</div>
                     <a href="index.php" class="btn btn-link">Volver al inicio</a>
                 </div>
             </div>

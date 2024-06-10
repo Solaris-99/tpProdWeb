@@ -102,6 +102,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-12 col-md-8 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">IMAGES</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./image.php">Imágenes</a></div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-table fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </div>
             <?php include_once __DIR__ . '/./partials/footer.php' ?>

@@ -7,17 +7,18 @@
  - auth: agregar autenticación y lógica de negocios ✔
  - login/register: Verificar que todos los campos estén completos ✔
  - logout desde admin, navbar overhaul. ✔
- - vista: user_movies.php => añadir paginado
  - añadir image upload en movie en admin ✔
  - añadir image table view en admin ✔
+ - vista: user_movies.php => añadir paginado
  - añadir crop/resize de imagen
  
 ## adminpanel
  - redirigir si el usuario no esta logeado/no tiene permiso ✔
 
 ## error
- - RedirectException: Guardar el mensaje en la sesion, y para luego poder mostrarlo en la página.
- - Capturar error cuando una pelicula no tiene categorias en la vista individual de la pelicula
+ - RedirectException: Guardar el mensaje en la sesion, y para luego poder mostrarlo en la página. ✔
+ - Testear redireccionamiento de errores no capturados ✔
+ - Capturar error cuando una pelicula no tiene categorias en la vista individual de la pelicula ✔
  - Dejar una imagen por defecto.
  - Ver el comportamiento con mas de 1 banner por pelicula
 

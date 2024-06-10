@@ -4,7 +4,7 @@ namespace MC\Business;
 use MC\DataAccess\UserDaoMySql;
 use MC\DataAccess\RoleDaoMySql;
 use MC\Helpers\Enums\Permissions;
-
+use MC\Helpers\Errors\RedirectException;
 
 class AuthBusiness{
     private UserDaoMySql $userDao;
@@ -38,6 +38,7 @@ class AuthBusiness{
      * Use enums found on  /app/helpers/enums/permissions.php
      */
     public function authPermission(Permissions $req_permission){
+        if(!isset($_SESSION['id_role'])){return false;}
         $role = $this->roleDao->find($_SESSION['id_role']);
         return $role->getPermissionLevel() >= $req_permission->value;
     }
@@ -66,12 +67,10 @@ class AuthBusiness{
     }
 
     public function login(array $data){
-        $head = 'login.php';
-        if($this->authenticate($data) && isset($data['password']) && isset($data['email'])){
-            $head = 'index.php';
+        if(!($this->authenticate($data) && isset($data['password']) && isset($data['email']))){
+            throw new RedirectException('login.php',"Email o contraseña incorrecto(s)",401);
         }
-
-        header("location: $head");
+        header("location: index.php");
     }
 
     public function logout(){

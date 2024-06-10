@@ -17,7 +17,7 @@ if (isset($_POST['SAVE'])) {
         $imageBusiness->create($_POST, $_FILES);
     }
     else{
-        $imageBusiness->update($_POST);
+        $imageBusiness->update($_POST, $_FILES);
     }
     header("location:$url_table");
 }

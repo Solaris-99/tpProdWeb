@@ -4,7 +4,6 @@ use Exception;
 
 class RedirectException extends Exception{
     private string $header;
-    private string $modal;
 
     public function __construct($header, $message = "", $code = 500){
         parent::__construct($message,$code);
@@ -13,6 +12,7 @@ class RedirectException extends Exception{
 
     public function redirect(): void{
         echo $this->header;
+        $_SESSION['error'] = $this->message;
         header("location: $this->header");
         die;
     }
