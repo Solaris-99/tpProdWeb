@@ -128,8 +128,12 @@ class MovieBusiness
         return ceil($this->dao->getMovieCount()[0]/10);
     }
 
-    public function getMoviesByIds(array $ids){
-        return $this->dao->getMoviesByIds($ids);
+    public function getMoviesByIds(array $ids, int $page = 0){
+        $moviesPerPages = 10;
+        if(count($ids) > $moviesPerPages){
+            $ids = array_slice($ids, max($moviesPerPages*$page,0), $moviesPerPages);
+        }
+        return $this->dao->getMoviesByIds($ids, $page);
     }
 
 }

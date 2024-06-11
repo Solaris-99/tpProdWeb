@@ -40,4 +40,16 @@ class MovieUserBusiness{
     public function getMoviesOfUser(int $id_user){
         return $this->dao->getMoviesOfUser($id_user);
     }
+
+    public function isOwned(int $id_movie): bool{
+        if(!isset($_SESSION['id_user'])){return false;}
+        $id_user = $_SESSION['id_user'];
+        return $this->dao->isOwned($id_movie,$id_user) > 0;
+    }
+
+    public function getNumOfUserPages(): int {
+        if(!isset($_SESSION['id_user'])){return 0;}
+        $movie_count = $this->dao->getCountOfUserMovies($_SESSION['id_user']);
+        return ceil($movie_count/10);        
+    }
 }

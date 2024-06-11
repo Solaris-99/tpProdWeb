@@ -108,21 +108,14 @@ class MovieDaoMySql extends Dao
     }
 
     public function getMoviesByIds(array $ids) {
-        // Ensure there are IDs to process
+        $moviesPerPage = 10;
         if (empty($ids)) {
             return [];
         }
-    
-        // Create a string with the same number of placeholders as there are IDs
-        $placeholders = implode(', ', array_fill(0, count($ids), '?'));
-        
-        // Prepare the SQL statement with the correct number of placeholders
-        $stmt = $this->pdo->prepare("SELECT * FROM MOVIE WHERE ID IN ($placeholders)");
-        
-        // Execute the statement with the list of IDs
+        $placeholders = implode(', ', array_fill(0, min($moviesPerPage, count($ids)), '?'));
+        $sql = "SELECT * FROM MOVIE WHERE ID IN ($placeholders)";
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute($ids);
-        
-        // Fetch the results as Movie objects
         return $stmt->fetchAll(PDO::FETCH_CLASS, $this->entityName);
     }
 

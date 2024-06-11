@@ -4,12 +4,15 @@
     <?php
         use MC\Helpers\Errors\RedirectException;
         use MC\Business\MovieBusiness;
+        use MC\Business\MovieUserBusiness;
         
         if(!isset($_GET['id'])){
             throw new RedirectException("./404.php","",404);
         }
 
         $movieBusiness = new MovieBusiness();
+        $movieUserBusiness = new MovieUserBusiness();
+        $isOwned = $movieUserBusiness->isOwned(($_GET['id']));
         $movie = $movieBusiness->find($_GET['id']);
         $movieId = $movie->getId();
         $categories = $movieBusiness->getCategories($movieId);

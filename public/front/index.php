@@ -66,20 +66,20 @@
                 <?php if($page > 0 ):?>
                     <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page-1?>">Anterior</a></li>
                 <?php endif?>
-                    <?php if($page > 2 ):?>
-                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page-2?>"><?php echo $page-3 ?></a></li>
-                    <?php endif?>
                     <?php if($page > 1 ):?>
-                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page-1?>"><?php echo $page-2 ?></a></li>
+                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page-2?>"><?php echo $page - 1 ?></a></li>
+                    <?php endif?>
+                    <?php if($page > 0 ):?>
+                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page-1?>"><?php echo $page ?></a></li>
                     <?php endif?>
                     
 
                     <li class="page-item page-link"> <?php echo $page+1 ?></li>
                     <?php if($page +1 < $numPages ):?>
-                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page+1?>"><?php echo $page+2 ?></a></li>
+                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page+1?>"><?php echo $page + 2  ?></a></li>
                     <?php endif?>
                     <?php if($page +2 < $numPages ):?>
-                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page+2?>"><?php echo $page+3 ?></a></li>
+                        <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page+2?>"><?php echo $page + 3 ?></a></li>
                     <?php endif?>
 
                 <?php if($page+1 != $numPages ):?>
