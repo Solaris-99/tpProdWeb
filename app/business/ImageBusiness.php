@@ -67,6 +67,10 @@ class ImageBusiness {
 
     public function getBanner(int $movie_id){
         $movie_path = $this->dao->getBanner($movie_id);
+        if(!$movie_path){
+            return $this->imageFolder . "default.jpg";
+        }
+
         return $this->imageFolder . $movie_path;       
     }
 

@@ -87,11 +87,13 @@ class MovieBusiness
         unset($data['SAVE']);
         try{
             $this->dao->create($data);
-            $imgTableData = [
-                'id_movie'=> $this->dao->getLastInsertId(),
-                'is_banner' => 1
-            ];
-            $this->imageBusiness->create($imgTableData,$imgFileData);
+            if($imgFileData['tmp_name'] != ''){
+                $imgTableData = [
+                    'id_movie'=> $this->dao->getLastInsertId(),
+                    'is_banner' => 1
+                ];
+                $this->imageBusiness->create($imgTableData,$imgFileData);
+            }
         }
         catch(PDOException $e){
             throw new RedirectException('./500.php',$e->getTraceAsString() . " ". $e->getMessage());
