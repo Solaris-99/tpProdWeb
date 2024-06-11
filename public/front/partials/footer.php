@@ -68,7 +68,7 @@
                     <div class="lc-block">
                         <div editable="rich">
                             <p>
-                                <a class="text-decoration-none" href="#">Terminos y condiciones</a>
+                                <a class="text-decoration-none" href="termsAndConditions.php">Terminos y condiciones</a>
                             </p>
                         </div>
                     </div>

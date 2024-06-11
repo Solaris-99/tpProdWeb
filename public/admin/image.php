@@ -74,6 +74,7 @@ if (isset($_GET['del'])){
                                                     switch($col){
                                                         case 'id';
                                                         case 'movie_id';
+                                                        case 'is_banner';
                                                             $input = 'number';
                                                             $required = false;
                                                             break;

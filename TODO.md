@@ -11,8 +11,10 @@
  - añadir image table view en admin ✔
  - vista: user_movies.php => añadir paginado ✔
  - agregar la pelicula propiamente dicha en la vista de movie ✔
- - añadir crop/resize de imagen 
- - agregar galeria en vista individual de movie
+ - añadir crop/resize de imagen ✔
+ - agregar galeria en vista individual de movie ✔
+ - añadir search
+ - agregar simulacion compra
  
 ## adminpanel
  - redirigir si el usuario no esta logeado/no tiene permiso ✔

@@ -1,11 +1,3 @@
-<?php
-
-use MC\Business\ImageBusiness;
-
-$imageBusiness = new ImageBusiness();
-?>
-
-
 <!-- Page Content -->
 <div class="container">
 
@@ -21,7 +13,7 @@ $imageBusiness = new ImageBusiness();
       </div>
     <?php endif ?>
     <div class="col-md-8">
-      <img class="img-fluid" src="<?php echo $imageBusiness->getBanner($movie->getId()); ?>" alt="<?php echo $movie->getTitle() ?>">
+      <?php include_once 'carousel.php' ?>
     </div>
  
 

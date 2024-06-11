@@ -65,3 +65,7 @@ nav{
 main{
     min-height: 45vh;
 }
+
+.carousel{
+    background-color: #222;
+}

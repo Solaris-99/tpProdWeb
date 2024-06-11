@@ -5,6 +5,7 @@
         use MC\Helpers\Errors\RedirectException;
         use MC\Business\MovieBusiness;
         use MC\Business\MovieUserBusiness;
+        use MC\Business\ImageBusiness;
         
         if(!isset($_GET['id'])){
             throw new RedirectException("./404.php","",404);
@@ -17,6 +18,8 @@
         $movieId = $movie->getId();
         $categories = $movieBusiness->getCategories($movieId);
         $related = $movieBusiness->getRelated($movieBusiness->getCategories($movieId,true), $movieId);
+        $imageBusiness = new ImageBusiness();
+        $images = $imageBusiness->getMovieImages($_GET['id']);
     ?>
     <body>
         <?php include_once __DIR__ . '/partials/nav.php' ?>

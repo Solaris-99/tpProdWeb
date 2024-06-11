@@ -112,7 +112,7 @@ class MovieDaoMySql extends Dao
         if (empty($ids)) {
             return [];
         }
-        $placeholders = implode(', ', array_fill(0, min($moviesPerPage, count($ids)), '?'));
+        $placeholders = implode(', ', array_fill(0, count($ids), '?'));
         $sql = "SELECT * FROM MOVIE WHERE ID IN ($placeholders)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($ids);

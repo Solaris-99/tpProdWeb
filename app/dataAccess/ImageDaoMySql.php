@@ -20,4 +20,11 @@ class ImageDaoMySql extends Dao{
         return $stmt->fetch();
     }
 
+    public function getMovieImages(int $movie_id){
+        $stmt = $this->pdo->prepare("SELECT `path` FROM image WHERE id_movie = ?");
+        $stmt->setFetchMode(PDO::FETCH_CLASS,$this->entityName);
+        $stmt->execute([$movie_id]);
+        return $stmt->fetchAll();
+    }
+
 }

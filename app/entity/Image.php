@@ -1,6 +1,7 @@
 <?php
 namespace MC\Entity;
 use MC\Entity\BaseModel;
+use MC\Business\ImageBusiness;
 
 class Image extends BaseModel{
 
@@ -12,11 +13,12 @@ class Image extends BaseModel{
         return $this->id_movie;
     }
     public function getPath(){
-        return $this->path;
+        return ImageBusiness::getImageFolder() . $this->path;
     }
     public function getIsHero(){
         return $this->is_hero == "1";
     }
+    
     
     
 }
