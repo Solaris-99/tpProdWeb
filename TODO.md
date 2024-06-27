@@ -19,6 +19,9 @@
 ## adminpanel
  - redirigir si el usuario no esta logeado/no tiene permiso ✔
 
+## refactor
+ - refactorizar y optimizar daos y querys.
+
 ## error
  - RedirectException: Guardar el mensaje en la sesion, y para luego poder mostrarlo en la página. ✔
  - Testear redireccionamiento de errores no capturados ✔
