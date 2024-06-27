@@ -15,7 +15,8 @@ class InsertBuilder extends QueryBuilder
     public function into(string ...$cols){
         $this->cols = $cols;
         $concatCols = $this->appendStrings(...$cols);
-        $this->query .= " ($concatCols) ";
+        $concatParams = $this->makeNamedParams();
+        $this->query .= " ($concatCols) VALUES ($concatParams)";
         return $this;
     }
     

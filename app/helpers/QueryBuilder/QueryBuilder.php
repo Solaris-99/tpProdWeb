@@ -16,8 +16,8 @@ abstract class QueryBuilder
         return new InsertBuilder($table);
     }
 
-    public static function select(string $table){
-
+    public static function select(string ...$cols){
+        return new SelectBuilder($cols);
     }
 
     public static function update(string $table){
@@ -37,8 +37,10 @@ abstract class QueryBuilder
         $params = array_map(function($e){
             return ":$e";
         },$this->cols);
-        return implode(",", $params);
+        return implode(", ", $params);
     }
 
-
+    public function getQuery(): string{ 
+        return $this->query;
+    }
 }
