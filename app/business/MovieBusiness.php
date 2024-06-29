@@ -3,22 +3,25 @@ namespace MC\Business;
 use MC\DataAccess\MovieDaoMySql;
 use MC\Helpers\Errors\RedirectException;
 use PDOException;
+use MC\Business\Business;
 use MC\Business\ImageBusiness;
+use MC\DataAccess\CategoryDaoMySql;
 
-class MovieBusiness 
+class MovieBusiness extends Business
 {
-    private MovieDaoMySql $dao;
     private ImageBusiness $imageBusiness;
+    private CategoryDaoMySql $categoryDao;
     
     public function __construct()
     {
         $this->dao = new MovieDaoMySql();
         $this->imageBusiness = new ImageBusiness();
+        $this->categoryDao = new CategoryDaoMySql();
     }
 
     public function find($id, $as_array = false){        
         try{
-            $movie = $this->dao->find($id, $as_array);
+            $movie = $this->dao->find(["*"],[["id","=",$id]],null,$as_array);
         }
         catch(PDOException $e){
             throw new RedirectException("./500.php","Algo salió mal buscando ésta película, por favor intentalo más tarde");
@@ -29,10 +32,33 @@ class MovieBusiness
         return $movie; //validar si existe;
     }
 
-    public function all(array $filter, bool $as_array = false, int $page = null){
-        unset($filter['page']);
+    public function all(array $cols = ["*"], array $filter = null, bool $as_array = false){
         try{
-            $movies = $this->dao->all($filter, $as_array, $page);
+            $page = 0;
+            $joins = null;
+            $curatedFilters = [];
+            $lim = null;
+            $up_lim = null;
+            if(isset($filter["page"]) && !($filter["page"] == "all")){
+                    $page = $filter["page"];
+                    $lim = $page*10;
+                    $up_lim = $lim + 10;
+            }
+            if(isset($filter["id_category"]) && !empty($filter["id_category"])){
+                $joins = [["category_movie","movie.id","category_movie.id_movie"],["category","category_movie.id_category","category.id"]];
+                array_push($curatedFilters,["id_category", "=", $filter["id_category"]]);
+            }
+            if(isset($filter["release"]) && !empty($filter["release"])){
+                array_push($curatedFilters,["release", ">=", $filter["release"]."-01-01", "release_min"]);
+                array_push($curatedFilters,["release", "<=", $filter["release"]."-12-31", "release_max"]);
+            }
+            if(isset($filter["price"]) && !empty($filter["price"])){
+                array_push($curatedFilters,["price", "<=", $filter["price"]]);
+            }
+            if(isset($filter["rating"]) && !empty($filter["rating"])){
+                array_push($curatedFilters,["rating", ">=", $filter["rating"]]);
+            }
+            $movies = $this->dao->all($cols,$curatedFilters,$lim,$up_lim,$joins, $as_array);
         }
         catch(PDOException $e){
             throw new RedirectException("./500.php","Por el momento el sitio no está disponible. Nos disculpamos");
@@ -49,45 +75,39 @@ class MovieBusiness
 
     public function getCategories(int $id, bool $ids = false){
         try{
-            $cats =  $this->dao->getCategories($id, $ids);
+            $col = "name";
+            if($ids){
+                $col = "category.id";
+            }
+            // $cats =  $this->dao->getCategories($id, $ids);
+           $cats = $this->categoryDao->all([$col],[["movie.id","=",$id,"movie_id"]],null,null,[["category_movie", "category.id","category_movie.id"],["movie", "category_movie.id_movie","movie.id"]], true);
         }
         catch(PDOException $e){
             throw new RedirectException('./500.php',"Algo salió mal buscando las categorias de una pélicula");
         }
+       
         if($ids){
-            //retornar un array de ids
-            $cats = array_merge(...$cats);
-            return $cats;
+            $ids_cats = [];
+            foreach($cats as $c){
+                array_push($ids_cats,$c["id"]);
+            }
+            return $ids_cats;
         }
-
+        
         $catsStr = '';
         foreach($cats as $c){
-            $catsStr.= $c[0] . " ";
+            $catsStr.= $c["name"] . " ";
         }
-
+        
         return $catsStr;
     }
 
-    /**
-     * gets the columns of the table
-     */
-    public function getColumns(){
-        try{
-            $columns = $this->dao->getColumns();
-        }
-        catch(PDOException $e){
-            throw new RedirectException('./500.php',"Algo salio mal buscando las columnas de la tabla de películas");
-        }
-        
-        return $columns;
-    }
-
-    public function create(array $data, array $imgFileData){
+    public function create(array $data, array $imgFileData= null){
         unset($data['id']);
         unset($data['SAVE']);
         try{
             $this->dao->create($data);
-            if($imgFileData['tmp_name'] != ''){
+            if($imgFileData['image']['tmp_name'] != ''){
                 $imgTableData = [
                     'id_movie'=> $this->dao->getLastInsertId(),
                     'is_banner' => 1
@@ -100,26 +120,6 @@ class MovieBusiness
         }
 
     }
-    
-    //TODO: Try catch
-    public function update(array $data){
-        unset($data['SAVE']);
-        try{
-            $this->dao->update($data);
-        }
-        catch(PDOException $e){
-            throw new RedirectException('./500.php',"Algo salió mal editando la película");
-        }
-    }
-
-    public function delete(int $id){
-        try{
-            $this->dao->delete($id);
-        }
-        catch(PDOException $e){
-            throw new RedirectException('./500.php',"Algo salió mal eliminando la película");
-        }
-    }
 
     public function getRelated(array $categories, $exclude_id){
         if(empty($categories)){return "";}
@@ -127,7 +127,7 @@ class MovieBusiness
     }
 
     public function getNumOfPages(){
-        return ceil($this->dao->getMovieCount()[0]/10);
+        return ceil($this->dao->find(["COUNT(1)"],as_array:true)["COUNT(1)"]/10);
     }
 
     public function getMoviesByIds(array $ids, int $page = 0){

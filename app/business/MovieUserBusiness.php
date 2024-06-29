@@ -1,55 +1,41 @@
 <?php
 namespace MC\Business;
+use MC\Business\Business;
 use MC\DataAccess\MovieUserDaoMySql;
+use PDOException;
+use MC\Helpers\Errors\RedirectException;
 
-class MovieUserBusiness{
-    private MovieUserDaoMySql $dao;
+class MovieUserBusiness extends Business{
     
     public function __construct()
     {
         $this->dao = new MovieUserDaoMySql();
     }
 
-    public function find(int $id, $as_array = false){
-        return $this->dao->find($id, $as_array);
-    }
-
-    public function all(array $filter, $as_array = false){
-        return $this->dao->all($filter, $as_array);
-    }
-
-    public function create(array $data){
-        unset($data['id']);
-        unset($data['SAVE']);
-        $this->dao->create($data);
-    }
-
-    public function update(array $data){
-        unset($data['SAVE']);
-        $this->dao->update($data);
-    }
-
-    public function delete(int $id){
-        $this->dao->delete($id);
-    }
-
-    public function getColumns(){
-        return $this->dao->getColumns();
-    }
-
     public function getMoviesOfUser(int $id_user){
-        return $this->dao->getMoviesOfUser($id_user);
+        try{
+
+            $user_movies = $this->all(["id_movie"],[["id_user","=",$id_user]]);
+            $ids = [];
+            foreach($user_movies as $um){
+                array_push($ids,$um->getIdMovie());
+            }
+            return $ids;
+        }
+        catch(PDOException $e){
+            throw new RedirectException("./500.php","Ocurrió un error mostrando sus películas. Nos disculpamos.");
+        }
+        
     }
 
     public function isOwned(int $id_movie): bool{
         if(!isset($_SESSION['id_user'])){return false;}
-        $id_user = $_SESSION['id_user'];
-        return $this->dao->isOwned($id_movie,$id_user) > 0;
+        return !is_bool($this->dao->find(["id_movie"],[["id_user","=",$_SESSION['id_user']],["id_movie","=",$id_movie]]));
     }
 
     public function getNumOfUserPages(): int {
         if(!isset($_SESSION['id_user'])){return 0;}
-        $movie_count = $this->dao->getCountOfUserMovies($_SESSION['id_user']);
+        $movie_count = $this->dao->find(["COUNT(1)"],[["id_user","=",$_SESSION['id_user']]],as_array:true)["COUNT(1)"];
         return ceil($movie_count/10);        
     }
 }

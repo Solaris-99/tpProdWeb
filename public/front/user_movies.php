@@ -11,7 +11,7 @@ $auth = new AuthBusiness();
 $auth->authPrivateEndUserSite();
 $movieUserBusiness = new MovieUserBusiness();
 $movieBusiness = new MovieBusiness();
-$movie_ids = $movieUserBusiness->getMoviesOfUser($_SESSION['id_user']); 
+$movie_ids = $movieUserBusiness->getMoviesOfUser($_SESSION['id_user']);
 if(isset($_GET['page'])){
     $page = $_GET['page'];
     if($page < 0){$page = 0;}

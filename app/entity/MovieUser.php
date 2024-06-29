@@ -2,7 +2,7 @@
 namespace MC\Entity;
 use MC\Entity\BaseModel;
 
-class MovieUser{
+class MovieUser extends BaseModel{
 
     private string $id_movie;
     private string $id_user;

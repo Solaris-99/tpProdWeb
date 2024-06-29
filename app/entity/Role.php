@@ -2,7 +2,7 @@
 namespace MC\Entity;
 use MC\Entity\BaseModel;
 
-class Role{
+class Role extends BaseModel{
 
     private string $name;
     private string $permission_level;

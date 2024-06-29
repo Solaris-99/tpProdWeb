@@ -13,18 +13,4 @@ class ImageDaoMySql extends Dao{
         $this->entityName = Image::class;
     }
 
-    public function getBanner(int $movie_id){
-        $stmt = $this->pdo->prepare("SELECT `path` FROM image WHERE id_movie = ? and is_banner = 1;");
-        $stmt->setFetchMode(PDO::FETCH_COLUMN,0);
-        $stmt->execute([$movie_id]);
-        return $stmt->fetch();
-    }
-
-    public function getMovieImages(int $movie_id){
-        $stmt = $this->pdo->prepare("SELECT `path` FROM image WHERE id_movie = ?");
-        $stmt->setFetchMode(PDO::FETCH_CLASS,$this->entityName);
-        $stmt->execute([$movie_id]);
-        return $stmt->fetchAll();
-    }
-
 }

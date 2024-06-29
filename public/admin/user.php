@@ -7,7 +7,7 @@
 use MC\Business\UserBusiness;
 $userBusiness = new UserBusiness();
 $columns = $userBusiness->getColumns();
-$data = $userBusiness->all([], true);
+$data = $userBusiness->all(as_array:true);
 $tablename = "Usuarios";
 $url_table = "user.php";
 

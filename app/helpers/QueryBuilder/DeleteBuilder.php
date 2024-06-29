@@ -8,7 +8,8 @@ class DeleteBuilder extends QueryBuilder{
 
     protected function __construct(string $table){
         $this->$table = $table;
-        $this->query = "DELETE FROM $table";
+        $this->values = [];
+        $this->query = "DELETE FROM $table ";
     }
 
     public function getQuery():string{

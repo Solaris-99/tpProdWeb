@@ -7,7 +7,7 @@
 use MC\Business\ImageBusiness;
 $imageBusiness = new ImageBusiness();
 $columns = $imageBusiness->getColumns();
-$data = $imageBusiness->all([], true);
+$data = $imageBusiness->all(as_array:true);
 $tablename = "Image";
 $url_table = "image.php";
 

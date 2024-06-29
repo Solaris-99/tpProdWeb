@@ -7,7 +7,7 @@
 use MC\Business\RoleBusiness;
 $roleBusiness = new RoleBusiness();
 $columns = $roleBusiness->getColumns();
-$data = $roleBusiness->all([], true);
+$data = $roleBusiness->all(as_array:true);
 $tablename = "Roles";
 $url_table = "role.php";
 

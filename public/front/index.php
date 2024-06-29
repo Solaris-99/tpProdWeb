@@ -7,7 +7,7 @@
     use MC\Business\CategoryBusiness;
     $movieBusiness = new MovieBusiness();
     $categoryBusiness = new CategoryBusiness();
-    $categorySelectData = $categoryBusiness->all([],true);
+    $categorySelectData = $categoryBusiness->all(["*"],null,true);
     if(isset($_GET['page'])){
         $page = $_GET['page'];
         if($page < 0){$page = 0;}
@@ -15,7 +15,7 @@
     else{
         $page = 0;
     }   
-    $peliculas = $movieBusiness->all($_GET,false,$page);
+    $peliculas = $movieBusiness->all(["movie.id","movie.title","movie.release","movie.duration","movie.rating","movie.description","movie.price"],$_GET,false);
     $numPages = $movieBusiness->getNumOfPages();
 
 ?>

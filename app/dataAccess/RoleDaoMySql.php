@@ -14,12 +14,4 @@ class RoleDaoMySql extends Dao{
 
     }
 
-    public function getEndUserRoleId(){
-        $stmt = $this->pdo->prepare("SELECT id FROM role WHERE `name` = 'end_user'");
-        $stmt->setFetchMode(PDO::FETCH_NUM);
-        $stmt->execute();
-        return $stmt->fetch()[0];
-    }
-
-
 }

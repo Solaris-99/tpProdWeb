@@ -14,8 +14,8 @@ $movieBusiness = new MovieBusiness();
 $categoryBusiness = new CategoryBusiness();
 
 
-$movieSelectData = $movieBusiness->all([],true);
-$categorySelectData = $categoryBusiness->all([],true);
+$movieSelectData = $movieBusiness->all(as_array:true);
+$categorySelectData = $categoryBusiness->all(as_array:true);
 $columns = ["ID","ID Película","ID Categoría","Película","Categoría"];
 $data = $categoryMovieBusiness->getMovieAndCategoryName(null, true);
 $tablename = "CategoryMovie";

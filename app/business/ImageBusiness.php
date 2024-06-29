@@ -6,8 +6,7 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use MC\Entity\Image;
 
-class ImageBusiness {
-    private ImageDaoMySql $dao;
+class ImageBusiness extends Business {
     private static $imageFolder = './../../public/front/resource/img/';
     
     public function __construct()
@@ -15,15 +14,7 @@ class ImageBusiness {
         $this->dao = new ImageDaoMySql();
     }
 
-    public function find(int $id, $as_array = false){
-        return $this->dao->find($id, $as_array);
-    }
-
-    public function all(array $filter, $as_array = false){
-        return $this->dao->all($filter, $as_array);
-    }
-
-    public function create(array $data, array $img_data){
+    public function create(array $data, array $img_data = null){
         unset($data['id']);
         unset($data['SAVE']);
         if(!isset($data['is_banner']) or empty($data['is_banner'])){
@@ -34,13 +25,13 @@ class ImageBusiness {
         $this->saveImage($img_data['image']['tmp_name'],$image_name);
 
         $data['path'] = $image_name;
-
-
         $this->dao->create($data);
     }
 
-    public function update(array $data, ?array $img_data){
+    public function update(array $data, ?array $img_data = null){
         unset($data['SAVE']);
+        $id = $data['id'];
+        unset($data['id']);
         if(!isset($data['is_banner']) or empty($data['is_banner'])){
             $data['is_banner'] = 0;
         }
@@ -50,17 +41,8 @@ class ImageBusiness {
             $this->saveImage($img_data['image']['tmp_name'],$image_name);
         }
         $data['path'] = $image_name;
-        $this->dao->update($data);
+        $this->dao->update($data, [['id','=',$id]]);
     }
-
-    public function delete(int $id){
-        $this->dao->delete($id);
-    }
-
-    public function getColumns(){
-        return $this->dao->getColumns();
-    }
-
     
     private function saveImage($image, $img_name){
         $manager = new ImageManager(new Driver());
@@ -73,19 +55,19 @@ class ImageBusiness {
     }
 
     public function getMovieImages(int $id_movie){
-        $images =  $this->dao->getMovieImages($id_movie);
+        $images =  $this->dao->all(["path"],[["id_movie","=",$id_movie]]);
         if(!$images){
             return self::$imageFolder . "default.jpg";
         }
         return $images;
     }
 
-    public function getBanner(int $movie_id){
-        $movie_path = $this->dao->getBanner($movie_id);
+    public function getBanner(int $id_movie){
+        $movie_path = $this->dao->find(["path"],[["id_movie", "=", $id_movie],["is_banner","=",1]],as_array:true);
         if(!$movie_path){
             return self::$imageFolder . "default.jpg";
         }
-        return self::$imageFolder . $movie_path;       
+        return self::$imageFolder . $movie_path["path"];       
     }
 
     public static function getImageFolder(){

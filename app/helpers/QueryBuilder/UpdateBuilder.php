@@ -11,15 +11,19 @@ class UpdateBuilder extends QueryBuilder
     {
         $this->table = $table;
         $this->query = "UPDATE $table SET ";
+        $this->values = [];
     }
 
-    public function set(string ...$cols){
-        $this->cols = $cols;
-        $params = array_map(function($e){
-            return "$e = :$e";
-        },$cols);
-        $concats = $this->appendStrings(...$params);
-        $this->query .= "$concats ";
+    public function set(array $values){
+        // values: [[col1, val1], [col2 ,val2]...]
+        $sets = [];
+        foreach($values as $item){
+            $col = $item[0];
+            array_push($sets, "`$col` = :$col ");
+            $this->values[":$col"] = $item[1];
+        }
+        $this->query.= $this->appendStrings(...$sets);
+        return $this;
     }
 
     public function getQuery():string{

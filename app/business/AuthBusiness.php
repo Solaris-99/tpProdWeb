@@ -23,7 +23,7 @@ class AuthBusiness{
     public function authenticate(array $data){
         $email = $data['email'];
         $password = $data['password'];
-        $user = $this->userDao->findByEmail($email);
+        $user =  $user = $this->userDao->find(["*"],[["email","=",$email]]);
 
         if(!empty($user) and password_verify($password,$user->getPassword())){
             $_SESSION['id_user'] = $user->getId();
@@ -39,7 +39,8 @@ class AuthBusiness{
      */
     public function authPermission(Permissions $req_permission){
         if(!isset($_SESSION['id_role'])){return false;}
-        $role = $this->roleDao->find($_SESSION['id_role']);
+        $role = $this->roleDao->find(["*"],[['id',"=",$_SESSION['id_role']]]);
+
         return $role->getPermissionLevel() >= $req_permission->value;
     }
 

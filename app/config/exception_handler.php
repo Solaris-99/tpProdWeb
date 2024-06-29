@@ -12,13 +12,14 @@ function handleException(Throwable $e){
         $e->redirect();
     }
     else{
-        //TODO: if authAdminSite->true then ->redirect to exception.php, show error // else -> redirect 500.
         $header = '';
         if($auth->authPermission(Permissions::ADMIN)){
             $_SESSION['detailed_error'] = $e->getTraceAsString(). "\n" . $e->getMessage();
-            $header = $adminErrorPage; 
+            $header = $adminErrorPage;
         }
         else{
+            // var_dump($e->getTraceAsString(). "\n" . $e->getMessage());
+            // die;
             $header = $userErrorPage;
         }
         header("location: $header");

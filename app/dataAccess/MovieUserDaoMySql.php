@@ -14,26 +14,5 @@ class MovieUserDaoMySql extends Dao{
 
     }
 
-    public function getMoviesOfUser(int $id_user){
-        $stmt = $this->pdo->prepare("SELECT id_movie from $this->table WHERE id_user = ?");
-        $stmt->setFetchMode(PDO::FETCH_COLUMN,0);
-        $stmt->execute([$id_user]);
-        return $stmt->fetchAll();
-    }
-
-    public function isOwned(int $id_movie, int $id_user){
-        $stmt = $this->pdo->prepare("SELECT id_movie from $this->table WHERE id_user = ? AND id_movie = ?");
-        $stmt->setFetchMode(PDO::FETCH_COLUMN,0);
-        $stmt->execute([$id_user, $id_movie]);
-        return $stmt->fetch();
-    }
-
-    public function getCountOfUserMovies(int $id_user){
-        $stmt = $this->pdo->prepare("SELECT COUNT(1) FROM $this->table WHERE id_user = ?");
-        $stmt->setFetchMode(PDO::FETCH_COLUMN,0);
-        $stmt->execute([$id_user]);
-        return $stmt->fetch();
-    }
-
 }
 

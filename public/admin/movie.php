@@ -7,7 +7,7 @@
 use MC\Business\MovieBusiness;
 $movieBusiness = new MovieBusiness();
 $columns = $movieBusiness->getColumns();
-$data = $movieBusiness->all([], true);
+$data = $movieBusiness->all(filter: ["page"=>"all"], as_array:true);
 $tablename = "Movie";
 $url_table = "movie.php";
 

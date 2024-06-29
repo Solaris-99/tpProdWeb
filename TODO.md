@@ -21,6 +21,8 @@
 
 ## refactor
  - refactorizar y optimizar daos y querys.
+ - hacer where y demas funciones que apliquen guardar valores/condiciones en queryBuilder.
+ - hacer una funcion que devuelva un array del tipo [:col => value], para todas las columnas
 
 ## error
  - RedirectException: Guardar el mensaje en la sesion, y para luego poder mostrarlo en la página. ✔

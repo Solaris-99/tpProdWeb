@@ -9,7 +9,7 @@ abstract class QueryBuilder
     protected bool $condition;
     protected string $table;
     protected string $query;
-    protected array $cols;
+    protected array $values;
     /**
      * Insert from...
      * @param table the table to insert into.
@@ -35,10 +35,10 @@ abstract class QueryBuilder
         return $concatStrings;
     }
 
-    protected function makeNamedParams(): string{
+    protected function makeNamedParams(array $cols): string{
         $params = array_map(function($e){
             return ":$e";
-        },$this->cols);
+        },$cols);
         return implode(", ", $params);
     }
 
@@ -46,34 +46,41 @@ abstract class QueryBuilder
         return $this->query;
     }
 
-    
-    public function join(string $table){
-        if($this->condition){
-            throw new Exception("where statement initialized before inner join");
-        }
-        $this->query .= " INNER JOIN $table ON $table.id_$this->table = $this->table.id ";
-        return $this;
-    }
-
-    public function where(string $col, string $operand){
+    public function where(?array $conditions = null){
+        // conditions: [[col1, operand1, val1], [col2,operand2,val2]...]
+        if($conditions == null || empty($conditions)){return $this;}
         $this->condition = true;
-        $this->query .= " WHERE $col $operand :$col ";
+        $this->query .= " WHERE ";
+        $conditions_arr = [];
+        foreach($conditions as $item){
+            $col = $item[0];
+            $operand = $item[1];
+            $value = $item[2];
+            if(count($item) > 3){
+                $named_param = $item[3];
+                array_push($conditions_arr, " $col $operand :$named_param ");
+                $this->values[":$named_param"] = $value;
+            }
+            else{
+                    array_push($conditions_arr, " $col $operand :$col ");
+                    $this->values[":$col"] = $value;
+            }
+        }
+        $this->query .= implode(" AND ", $conditions_arr);
         return $this;
     }
 
-    public function or(string $col, string $operand){
-        if( !$this->condition ){    
-            throw new \Exception("Where statement not initialized (OR clausule)");
+    public function getValues(){
+        return $this->values;
+    }
+
+    public function limit(?int $limit, ?int $upp_limit = null){
+        if(is_null($limit)){return $this;}
+        $this->query .= " LIMIT $limit ";
+        if($upp_limit != null){
+            $this->query .= ", $upp_limit";
         }
-        $this->query .= " OR $col $operand :$col";
         return $this;
     }
 
-    public function and(string $col, string $operand){
-        if( !$this->condition ){    
-            throw new \Exception("Where statement not initialized (AND clausule)");
-        }
-        $this->query .= " AND $col $operand :$col";
-        return $this;
-    }
 }

@@ -7,7 +7,7 @@
 use MC\Business\MovieUserBusiness;
 $movieUserBusiness = new MovieUserBusiness();
 $columns = $movieUserBusiness->getColumns();
-$data = $movieUserBusiness->all([], true);
+$data = $movieUserBusiness->all(as_array:true);
 $tablename = "Películas de usuarios";
 $url_table = "movie_user.php";
 

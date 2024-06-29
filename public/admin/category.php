@@ -6,7 +6,7 @@
 use MC\Business\CategoryBusiness;
 $categoryBusiness = new categoryBusiness();
 $columns = $categoryBusiness->getColumns();
-$data = $categoryBusiness->all([], true);
+$data = $categoryBusiness->all(as_array:true);
 $tablename = "Category";
 $url_table = "category.php";
 
