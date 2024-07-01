@@ -64,7 +64,7 @@ if (isset($_POST['del'])){
                                     <div class='d-flex '>
                                         <?php foreach ($columns as $col) : ?>
                                             <div class="form-group d-inline-block mr-2">
-                                                <label for="<?php echo $col ?>"><?php echo $col ?></label>
+                                                <label for="<?php echo $col ?>"><?php if($col != "id"){echo $col;} ?></label>
                                                 <?php 
                                                     $input;
                                                     $required;
@@ -79,7 +79,7 @@ if (isset($_POST['del'])){
                                                             break;
                                                     }
                                                 ?>
-                                                <input type="<?php echo $input?>" class="form-control" id="<?php echo $col ?>" name='<?php echo $col ?>' <?php if($required){echo 'required';}?> value="<?php echo isset($cat)? $cat[$col] :"" ?>" >
+                                                <input type="<?php echo $input?>" class="form-control" id="<?php echo $col ?>" name='<?php echo $col ?>' <?php if($required){echo 'required';}?> value="<?php echo isset($cat)? $cat[$col] :"" ?>" <?php if($col == 'id'){echo "hidden";} ?> >
                                             </div>
                                         <?php endforeach ?>
                                     </div>

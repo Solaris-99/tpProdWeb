@@ -79,10 +79,7 @@ if (isset($_POST['del'])){
                                 <h4>Añadir una nueva entrada</h4>
                                 <form class="user" action='' method='POST'>
                                     <div class='d-flex '>
-                                            <div class="form-group d-inline-block mr-2">
-                                                <label>ID</label>
-                                                <input type="number" class="form-control" value="<?php if(isset($mov)){echo $mov['id']; }?>" min='1'>
-                                            </div>
+                                                <input type="number" class="form-control" value="<?php if(isset($mov)){echo $mov['id']; }?>" min='1' hidden>
                                             <div class="form-group d-inline-block mr-2 my-auto ">
                                                 <label for='id_movie' class='d-block'>ID Película</label>
                                                 <select class="form-select d-inline-block mr-2" name='id_movie' id='id_movie'>
