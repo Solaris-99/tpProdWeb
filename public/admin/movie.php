@@ -22,11 +22,11 @@ if (isset($_POST['SAVE'])) {
     header("location:$url_table");
 }
 
-if(isset($_GET['edit'])){
-    $mov = $movieBusiness->find($_GET['edit'], true);
+if(isset($_POST['edit'])){
+    $mov = $movieBusiness->find($_POST['edit'], true);
 }
-if (isset($_GET['del'])){
-    $movieBusiness->delete($_GET['del']);
+if (isset($_POST['del'])){
+    $movieBusiness->delete($_POST['del']);
 }
 
 
@@ -70,7 +70,7 @@ if (isset($_GET['del'])){
                                     <div class='d-flex '>
                                         <?php foreach ($columns as $col) : ?>
                                             <div class="form-group d-inline-block mr-2">
-                                                <label for="<?php echo $col ?>"><?php echo $col ?></label>
+                                                <label for="<?php echo $col ?>"><?php if ($col != 'id') {echo $col;} ?></label>
                                                 <?php 
                                                     $input;
                                                     $required;
@@ -93,7 +93,7 @@ if (isset($_GET['del'])){
                                                             break;
                                                     }
                                                 ?>
-                                                <input type="<?php echo $input?>" class="form-control" id="<?php echo $col ?>" name='<?php echo $col ?>' <?php if($required){echo 'required';}?> value="<?php echo isset($mov)? $mov[$col] :"" ?>" >
+                                                <input type="<?php echo $input?>" class="form-control" id="<?php echo $col ?>" name='<?php echo $col ?>' <?php if($required){echo 'required';}?> value="<?php echo isset($mov)? $mov[$col] :"" ?>" <?php if($col == 'id'){echo "hidden";} ?> >
                                             </div>
                                         <?php endforeach ?>
                                         <label for="image" style='width:130px;'>

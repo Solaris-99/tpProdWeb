@@ -121,7 +121,7 @@ class MovieBusiness extends Business
 
     }
 
-    public function getRelated(array $categories, $exclude_id){
+    public function getRelated(array $categories, int $exclude_id){
         if(empty($categories)){return "";}
         return $this->dao->getRelated($categories, $exclude_id);
     }

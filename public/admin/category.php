@@ -20,11 +20,11 @@ if (isset($_POST['SAVE'])) {
     header("location:$url_table");
 }
 
-if(isset($_GET['edit'])){
-    $cat = $categoryBusiness->find($_GET['edit'], true);
+if(isset($_POST['edit'])){
+    $cat = $categoryBusiness->find($_POST['edit'], true);
 }
-if (isset($_GET['del'])){
-    $categoryBusiness->delete($_GET['del']);
+if (isset($_POST['del'])){
+    $categoryBusiness->delete($_POST['del']);
 }
 
 

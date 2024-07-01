@@ -22,11 +22,11 @@ if (isset($_POST['SAVE'])) {
     header("location:$url_table");
 }
 
-if(isset($_GET['edit'])){
-    $mov = $roleBusiness->find($_GET['edit'], true);
+if(isset($_POST['edit'])){
+    $mov = $roleBusiness->find($_POST['edit'], true);
 }
-if (isset($_GET['del'])){
-    $roleBusiness->delete($_GET['del']);
+if (isset($_POST['del'])){
+    $roleBusiness->delete($_POST['del']);
 }
 
 

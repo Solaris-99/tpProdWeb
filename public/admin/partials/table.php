@@ -27,7 +27,17 @@
                             <?php foreach ($d as $val): ?>
                                 <td><?php echo $val ?></td>
                                 <?php endforeach ?>
-                                <td><a href="<?php echo $url_table ."?edit=".$d['id'] ?>" class ='btn btn-warning btn-circle btn-sm text-dark'>M</a> <a href="<?php echo $url_table ."?del=".$d['id'] ?>" class='btn btn-danger btn-circle btn-sm'><i class="fas fa-trash"></i></a></td>
+                                <td>
+                                    <form action="<?php echo $url_table?>" class='d-inline' METHOD='POST'>
+                                        <input type="hidden" id='edit' name='edit' value='<?php echo $d["id"];?>'>
+                                        <input type="submit" class ='btn btn-warning btn-circle btn-sm text-dark' value='M'>
+                                    </form>
+                                    <form action="<?php echo $url_table?>" class='d-inline' METHOD='POST'>
+                                        <input type="hidden" id='del' name='del' value='<?php echo $d["id"];?>'>
+                                        <input type="submit" class='btn btn-danger btn-circle btn-sm' value='D'>
+                                    </form>
+                                </td>
+
                         </tr>
                     <?php endforeach ?>
                     </tr>

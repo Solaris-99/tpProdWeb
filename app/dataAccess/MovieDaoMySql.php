@@ -13,7 +13,7 @@ class MovieDaoMySql extends Dao
         $this->entityName = Movie::class;
     }
 
-    public function getRelated(array $categories, bool $exclude_id){    
+    public function getRelated(array $categories, int $exclude_id){    
         $sql = "SELECT movie.id, movie.title FROM movie
         INNER JOIN category_movie ON category_movie.id_movie = movie.id
         INNER JOIN category ON  category_movie.id_category = category.id
