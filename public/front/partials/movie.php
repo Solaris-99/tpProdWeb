@@ -30,7 +30,11 @@
       <?php if (!$isOwned) : ?>
         <div class='d-flex   justify-content-around p-2'>
           <p class="bg-primary rounded my-auto p-2 text-white"><?php echo $movie->getPrice() ?></p>
-          <a href="#" class="btn btn-primary d-block p-2 my-auto">Comprar</a>
+          <form action="./controllers/buy.php" METHOD="POST">
+            <input type="hidden" name='id_movie' id='id_movie' value='<?php echo $movie->getId()?>'>
+            <input type='submit' class="btn btn-primary d-block p-2 my-auto" value='Comprar'>
+          </form>
+
         </div>
       <?php endif ?>
     </div>

@@ -13,16 +13,17 @@
  - agregar la pelicula propiamente dicha en la vista de movie ✔
  - añadir crop/resize de imagen ✔
  - agregar galeria en vista individual de movie ✔
+ - agregar simulacion compra ✔
+ - agregar modal de compra 
  - añadir search
- - agregar simulacion compra
  
 ## adminpanel
  - redirigir si el usuario no esta logeado/no tiene permiso ✔
 
 ## refactor
- - refactorizar y optimizar daos y querys.
- - hacer where y demas funciones que apliquen guardar valores/condiciones en queryBuilder.
- - hacer una funcion que devuelva un array del tipo [:col => value], para todas las columnas
+ - refactorizar y optimizar daos y querys. ✔
+ - hacer where y demas funciones que apliquen guardar valores/condiciones en queryBuilder. ✔
+ - hacer una funcion que devuelva un array del tipo [:col => value], para todas las columnas ✔
 
 ## error
  - RedirectException: Guardar el mensaje en la sesion, y para luego poder mostrarlo en la página. ✔

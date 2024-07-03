@@ -1,5 +1,7 @@
 <?php
 namespace MC\Business;
+
+use Exception;
 use MC\Business\Business;
 use MC\DataAccess\MovieUserDaoMySql;
 use PDOException;
@@ -25,7 +27,6 @@ class MovieUserBusiness extends Business{
         catch(PDOException $e){
             throw new RedirectException("./500.php","Ocurrió un error mostrando sus películas. Nos disculpamos.");
         }
-        
     }
 
     public function isOwned(int $id_movie): bool{
@@ -36,6 +37,16 @@ class MovieUserBusiness extends Business{
     public function getNumOfUserPages(): int {
         if(!isset($_SESSION['id_user'])){return 0;}
         $movie_count = $this->dao->find(["COUNT(1)"],[["id_user","=",$_SESSION['id_user']]],as_array:true)["COUNT(1)"];
-        return ceil($movie_count/10);        
+        return ceil($movie_count/10);
+    }
+
+    public function buy(int $id_movie, int $id_user){
+        try{
+            $this->dao->create(["id_movie"=>$id_movie, "id_user"=>$id_user]);
+        }
+        catch (Exception $e){
+            throw new RedirectException("./500.php","Ocurrió un error con la compra, por favor intente más tarde. Nos disculpamos.");
+        }
+
     }
 }

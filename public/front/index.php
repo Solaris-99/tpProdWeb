@@ -14,6 +14,7 @@
     }
     else{
         $page = 0;
+        $_GET["page"] = 0;
     }   
     $peliculas = $movieBusiness->all(["movie.id","movie.title","movie.release","movie.duration","movie.rating","movie.description","movie.price"],$_GET,false);
     $numPages = $movieBusiness->getNumOfPages();
