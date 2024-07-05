@@ -38,11 +38,11 @@
             </label>
             <label for="release">
                 Año de estreno
-                <input type="number" name='release' class='d-block rounded' min='2010' max='2024'>
+                <input type="number" name='release' class='d-block rounded' min='2010' max='2024' style="width: 100px;">
             </label>
             <label for="rating">
                 Calificación
-                <input type="number" name='rating' class='d-block rounded' max='10' min='1' >
+                <input type="number" name='rating' class='d-block rounded' max='10' min='1' style="width: 100px;">
             </label>
             <label for="price">
                 Precio

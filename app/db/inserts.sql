@@ -67,3 +67,5 @@ INSERT INTO role (name,permission_level) VALUES ("admin", 2);
 INSERT INTO role (name, permission_level) VALUES ("end_user",0);
 
 INSERT INTO user (email, username, password, id_role) VALUES("admin@mcube.com", "admin", "$2y$10$yJYMthbMWlWUHBGEtguqseuSrdWG8.o8WYWUL0yx77B27mrIwvCNa", 1);
+
+INSERT INTO user(email, username, password, id_role) VALUES("pepe@gmail.com","pepe123","$2y$10$u0i3EaQxZ9mnT1dI6EQbCOpX4BwrzKbg01kqBoSJ/8Y1TL2DspjPS", 2);

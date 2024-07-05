@@ -19,7 +19,7 @@ class Connection{
                 self::$con = new PDO($dsn,$username,$password);
             }
             catch (PDOException $e){
-                throw new RedirectException("unavailable.php"); //TODO: kill webpage
+                throw new RedirectException("unavailable.php"); 
             }
         }
         return self::$con;
