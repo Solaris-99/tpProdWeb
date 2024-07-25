@@ -48,6 +48,7 @@
                 Precio
                 <input type="number" name='price' class='d-block rounded' min='5'>
             </label>
+            <input type="search" name='movie_search' id='movie_search' placeholder="Nombre de la película">
             <input type="submit" value="Filtrar" class='rounded'>
         </form>
         <?php include_once __DIR__ . '/./partials/error.php'?>

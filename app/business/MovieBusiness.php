@@ -58,6 +58,10 @@ class MovieBusiness extends Business
             if(isset($filter["rating"]) && !empty($filter["rating"])){
                 array_push($curatedFilters,["rating", ">=", $filter["rating"]]);
             }
+            if(isset($filter["movie_search"]) && !empty($filter["movie_search"])){
+                array_push($curatedFilters,["title", "LIKE", "%". $filter["movie_search"] ."%"]);
+            }
+
             $movies = $this->dao->all($cols,$curatedFilters,$lim,$up_lim,$joins, $as_array);
         }
         catch(PDOException $e){
