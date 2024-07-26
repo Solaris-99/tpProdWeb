@@ -20,8 +20,7 @@ else{
     $page = 0;
 }  
 $numPages = $movieUserBusiness->getNumOfUserPages();
-$peliculas = $movieBusiness->getMoviesByIds($movie_ids,$page);
-
+$peliculas = $movieBusiness->getMoviesByIds($movie_ids,$page,$_GET);
 ?>
 
 <body>
@@ -33,6 +32,10 @@ $peliculas = $movieBusiness->getMoviesByIds($movie_ids,$page);
             </div>
         <?php endif ?>
         <section class='container'>
+            <form action="#" method='GET' class='my-2 mx-auto w-fit border border-dark-subtle p-2 rounded'>
+                <input type="search" name='movie_search' id='movie_search' placeholder="Busca entre tus películas...">
+                <input type="submit" value='🔍'>
+            </form>
             <?php foreach ($peliculas as $pelicula) : ?>
                 <?php include __DIR__ . '/partials/card.php' ?>
             <?php endforeach ?>

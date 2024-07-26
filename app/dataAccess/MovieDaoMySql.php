@@ -32,13 +32,23 @@ class MovieDaoMySql extends Dao
         return $movies;
     }
 
-    public function getMoviesByIds(array $ids) {
+    public function getMoviesByIds(array $ids,int $page, string $title) {
+        $items_per_page = 10;
+        $low_lim = $page*$items_per_page;        
+        $up_lim = $low_lim+$items_per_page;
+
         if (empty($ids)) {
             return [];
         }
         $placeholders = implode(', ', array_fill(0, count($ids), '?'));
         $sql = "SELECT * FROM MOVIE WHERE ID IN ($placeholders)";
+        if(!empty($title)){
+            $sql .=  " AND title LIKE ?";
+        }
         $stmt = $this->pdo->prepare($sql);
+        if(!empty($title)){
+            array_push($ids,$title);
+        }
         $stmt->execute($ids);
         return $stmt->fetchAll(PDO::FETCH_CLASS, $this->entityName);
     }

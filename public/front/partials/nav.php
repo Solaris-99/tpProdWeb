@@ -27,7 +27,7 @@ $auth = new AuthBusiness();
             </div>
 
             <div>
-                <form action="#" mehtod='GET'>
+                <form action="index.php" mehtod='GET'>
                     <input type="search" name='movie_search' id='movie_search' placeholder="Buscar películas...">
                     <input type="submit" value="🔍">
                 </form>

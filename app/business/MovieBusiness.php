@@ -134,12 +134,17 @@ class MovieBusiness extends Business
         return ceil($this->dao->find(["COUNT(1)"],as_array:true)["COUNT(1)"]/10);
     }
 
-    public function getMoviesByIds(array $ids, int $page = 0){
+    public function getMoviesByIds(array $ids, int $page, array $filter){
         $moviesPerPages = 10;
+        if(isset($filter['movie_search'])){
+            $title = "%". $filter['movie_search'] . "%";
+        }else{
+            $title = "";
+        }
         if(count($ids) > $moviesPerPages){
             $ids = array_slice($ids, max($moviesPerPages*$page,0), $moviesPerPages);
         }
-        return $this->dao->getMoviesByIds($ids, $page);
+        return $this->dao->getMoviesByIds($ids, $page, $title);
     }
 
 }
